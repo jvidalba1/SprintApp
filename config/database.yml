@@ -1,0 +1,18 @@
+pg: &pg
+  adapter: mysql2
+  encoding: utf8
+  username: sps_admin
+  password: sps_admin_db
+  pool: 5
+
+development:
+  <<: *pg
+  database: sprint_app_development
+
+test:
+  <<: *pg
+  database: sprint_app_test
+  
+cucumber:
+  <<: *pg
+  database: sprint_app_cucumber
