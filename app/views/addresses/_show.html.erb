@@ -1,19 +1,19 @@
 <div class="panel">
-    <h3>Address</h3>
+    <h3>Direcciones</h3>
     <div class="panel_contents">
       <div id="attributes_table_employee_1" class="attributes_table">
         <table cellspacing="0" cellpadding="0" border="0">
           <tbody>
           <tr>
-            <th>Street</th>
+            <th>Dirección</th>
             <td><%= address.street.blank? ? raw('<span class="empty">Empty</span>') : address.street %></td>
           </tr>
           <tr>
-            <th>City</th>
+            <th>Ciudad</th>
             <td><%= address.city.blank? ? raw('<span class="empty">Empty</span>') : address.city %></td>
           </tr>
           <tr>
-            <th>State</th>
+            <th>Departamento</th>
             <td><%= address.state.blank? ? raw('<span class="empty">Empty</span>') : address.state %></td>
           </tr>
           <tr>
