@@ -1,17 +1,17 @@
 #site_footer
 	#footerNav
 		%ul
-			%li= link_to "Dashboard", dashboard_path
+			%li= link_to "#{t 'links.Dashboard'}", dashboard_path
 			%li |
-			%li= link_to "Calendar", calendar_path
+			%li= link_to "#{t 'links.Calendar'}", calendar_path
 			%li |
-			%li= link_to "Current Sprint", sprint_path
+			%li= link_to "#{t 'links.Current_sprint'}", sprint_path
 			%li |
-			%li= link_to "Projects", projects_path
+			%li= link_to "#{t 'links.Projects'}", projects_path
 			%li |
-			%li= link_to "My Account", profile_admin_users_path
+			%li= link_to "#{t 'links.My_account'}", profile_admin_users_path
 			%li |
-			%li= link_to "Logout", destroy_admin_user_session_path
+			%li= link_to "#{t 'links.Logout'}", destroy_admin_user_session_path
 		= form_tag switch_projects_path do
-			= label_tag :id, "Switch Project:"
-			= select_tag :id, options_from_collection_for_select(Project.active.accessible_by(current_ability).includes(:client).reorder("lower(clients.name) asc, lower(projects.name) asc"), :url, :switcher_name, (@project.url rescue nil)), onchange: "if ( $(this).val() != '' ) $(this).closest('form').submit();", prompt: "Choose Project..."
+			= label_tag :id, "Cambiar proyecto:"
+			= select_tag :id, options_from_collection_for_select(Project.active.accessible_by(current_ability).includes(:client).reorder("lower(clients.name) asc, lower(projects.name) asc"), :url, :switcher_name, (@project.url rescue nil)), onchange: "if ( $(this).val() != '' ) $(this).closest('form').submit();", prompt: "Seleccione un proyecto"

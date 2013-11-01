@@ -1,0 +1,669 @@
+es:
+  links:
+    Dashboard: "Tablero"
+    Calendar: "Calendario"
+    Current_sprint: "Sprint actual"
+    Projects: "Proyectos"
+    My_account: "Mi cuenta"
+    Logout: "Salir"
+
+  unauthorized:
+    manage:
+      admin_user: "You are not allowed to manage other user accounts."
+      ticket: "You are only allowed access to tickets belonging to projects you are a member of."
+    change_password:
+      admin_user: "You are not allowed to change passwords for other user accounts."
+    archive:
+      project: "You are not allowed to archive projects."
+    unarchive:
+      project: "You are not allowed to unarchive projects."
+    complete:
+      milestone: "You are not allowed to complete milestones."
+    revive:
+      milestone: "You are not allowed to revive milestones."
+
+  errors:
+    messages:
+      expired: "has expired, please request a new one"
+      not_found: "not found"
+      already_confirmed: "was already confirmed, please try signing in"
+      not_locked: "was not locked"
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
+
+  devise:
+    failure:
+      already_authenticated: 'You are already signed in.'
+      unauthenticated: 'You need to sign in or sign up before continuing.'
+      unconfirmed: 'You have to confirm your account before continuing.'
+      locked: 'Your account is locked.'
+      invalid: 'Invalid email or password.'
+      invalid_token: 'Invalid authentication token.'
+      timeout: 'Your session expired, please sign in again to continue.'
+      inactive: 'Your account has not been activated yet.'
+      suspended: 'Your account has been suspended.'
+    sessions:
+      signed_in: 'Signed in successfully.'
+      signed_out: 'Signed out successfully.'
+    passwords:
+      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
+      updated: 'Your password was changed successfully. You are now signed in.'
+      updated_not_active: 'Your password was changed successfully.'
+      send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
+    confirmations:
+      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
+      send_paranoid_instructions: 'If your e-mail exists on our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
+      confirmed: 'Your account was successfully confirmed. You are now signed in.'
+    registrations:
+      signed_up: 'Welcome! You have signed up successfully.'
+      updated: 'You updated your account successfully.'
+      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+    unlocks:
+      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
+      unlocked: 'Your account was successfully unlocked. You are now signed in.'
+      send_paranoid_instructions: 'If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.'
+    omniauth_callbacks:
+      success: 'Successfully authorized from %{kind} account.'
+      failure: 'Could not authorize you from %{kind} because "%{reason}".'
+    mailer:
+      confirmation_instructions:
+        subject: 'Confirmation instructions'
+      reset_password_instructions:
+        subject: 'Reset password instructions'
+      unlock_instructions:
+        subject: 'Unlock Instructions'
+
+  date:
+    abbr_day_names:
+    - dom
+    - lun
+    - mar
+    - mié
+    - jue
+    - vie
+    - sáb
+    abbr_month_names:
+    -
+    - ene
+    - feb
+    - mar
+    - abr
+    - may
+    - jun
+    - jul
+    - ago
+    - sep
+    - oct
+    - nov
+    - dic
+    day_names:
+    - domingo
+    - lunes
+    - martes
+    - miércoles
+    - jueves
+    - viernes
+    - sábado
+    formats:
+      default: ! '%d/%m/%Y'
+      long: ! '%A, %d de %B de %Y'
+      short: ! '%d de %B, %Y'
+    month_names:
+    -
+    - enero
+    - febrero
+    - marzo
+    - abril
+    - mayo
+    - junio
+    - julio
+    - agosto
+    - septiembre
+    - octubre
+    - noviembre
+    - diciembre
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: cerca de 1 hora
+        other: cerca de %{count} horas
+      about_x_months:
+        one: cerca de 1 mes
+        other: cerca de %{count} meses
+      about_x_years:
+        one: cerca de 1 año
+        other: cerca de %{count} años
+      almost_x_years:
+        one: casi 1 año
+        other: casi %{count} años
+      half_a_minute: medio minuto
+      less_than_x_minutes:
+        one: menos de 1 minuto
+        other: menos de %{count} minutos
+      less_than_x_seconds:
+        one: menos de 1 segundo
+        other: menos de %{count} segundos
+      over_x_years:
+        one: más de 1 año
+        other: más de %{count} años
+      x_days:
+        one: 1 día
+        other: ! '%{count} días'
+      x_minutes:
+        one: 1 minuto
+        other: ! '%{count} minutos'
+      x_months:
+        one: 1 mes
+        other: ! '%{count} meses'
+      x_seconds:
+        one: 1 segundo
+        other: ! '%{count} segundos'
+    prompts:
+      day: Día
+      hour: Hora
+      minute: Minuto
+      month: Mes
+      second: Segundos
+      year: Año
+    format:
+      short: ! '%d de %b de %B'
+  errors:
+    format: ! '%{attribute} %{message}'
+    messages: &70174617415080
+      accepted: debe ser aceptado
+      blank: no puede estar en blanco
+      confirmation: no coincide con la confirmación
+      empty: no puede estar vacío
+      equal_to: debe ser igual a %{count}
+      even: debe ser un número par
+      exclusion: está reservado
+      greater_than: debe ser mayor que %{count}
+      greater_than_or_equal_to: debe ser mayor o igual que %{count}
+      inclusion: no está incluído en la lista
+      invalid: es inválido
+      less_than: debe ser menor que %{count}
+      less_than_or_equal_to: debe ser menor o igual que %{count}
+      not_a_number: debe ser un número
+      not_an_integer: debe ser un entero
+      odd: debe ser un número impar
+      record_invalid: ! 'La validación falló: %{errors}'
+      taken: ya ha sido creado
+      too_long:
+        one: es demasiado largo (máximo 1 caracter)
+        other: es demasiado largo (máximo %{count} caracteres)
+      too_short:
+        one: es demasiado corto (mínimo 1 caracter)
+        other: es demasiado corto (mínimo %{count} caracteres)
+      wrong_length:
+        one: longitud errónea (debe ser de 1 caracter)
+        other: longitud errónea (debe ser de %{count} caracteres)
+      extension_white_list_error: No esta permitido subir archivos con estensión %{extension}, debe ser %{allowed_types}
+    template: &70174617408400
+      body: ! 'Revise que los siguientes campos sean válidos:'
+      header:
+        one: ! '%{model} no pudo guardarse debido a 1 error'
+        other: ! '%{model} no pudo guardarse debido a %{count} errores'
+  helpers:
+    select:
+      prompt: Por favor selecciona
+    submit:
+      create: Crear %{model}
+      submit: Guardar %{model}
+      update: Actualizar %{model}
+  number:
+    currency:
+      format:
+        delimiter: ! ','
+        format: ! '%u%n'
+        precision: 0
+        separator: .
+        significant: false
+        strip_insignificant_zeros: false
+        unit: $
+    format:
+      delimiter: ! ','
+      precision: 2
+      separator: .
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion: mil millones
+          million: millón
+          quadrillion: mil billones
+          thousand: mil
+          trillion: billón
+          unit: ''
+      format:
+        delimiter: ! ','
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ! ','
+    precision:
+      format:
+        delimiter: ! ','
+  support:
+    array:
+      last_word_connector: ! ' y '
+      two_words_connector: ! ' y '
+      words_connector: ! ', '
+  time:
+    am: am
+    formats:
+      default: ! '%a, %d de %b de %Y a las %H:%M:%S %Z'
+      long: ! '%A, %d de %B de %Y a las %I:%M %p'
+      short: ! '%d de %B, %Y a las %H:%M hrs'
+      shorter: ! '%d de %B, %Y '
+    pm: pm
+  will_paginate:
+    previous_label: << Anterior
+    next_label: Siguiente >>
+    page_entries_info:
+      single_page_html:
+        zero: No hay %{model}
+        one: Mostrando 1 %{model}
+        other: Mostrando %{count} %{model}
+      multi_page_html: Mostrando %{model} del %{from} al %{to}, %{count} en total
+    page_gap: ! '....'
+  activemodel:
+    errors:
+      format: ! '%{attribute} %{message}'
+      messages: *70174617415080
+      template: *70174617408400
+  activerecord:
+    errors:
+      format: ! '%{attribute} %{message}'
+      messages: *70174617415080
+      template: *70174617408400
+
+  ransack:
+    predicates:
+      lteq: "Menor o igual a"
+
+    attributes:
+      cliente:
+        cliente: "Cédula"
+        nombre1: "Primer nombre"
+        nombre2: "Segundo nombre"
+        apellido1: "Primer apellido"
+        apellido2: "Segundo apellido"
+        direccion1: "Dirección residencia"
+        direccion2: "Dirección de correspondencia"
+        direccion3: "Dirección de empresa"
+        email: "Correo electrónico"
+        telefono1: "Teléfono principal"
+        telefono2: "Teléfono alternativo"
+        telefono3: "Teléfono empresa"
+        fecha_expdoc: "Fecha expedición documento"
+        Tipo_identificacion: "Tipo identificación"
+        Mujer_CabezaFlia: "Mujer cabeza de familia"
+        Genero: "Género"
+        Ocupacion: "Ocupación"
+        Asistio_asamblea: "Asistió asamblea?"
+        lugar_exp_documento: "Lugar expedición del documento"
+
+      portafolio:
+        cliente_id: "Cédula"
+        nro_periodo: "Número periodo"
+        Fecha_Ultpago: "Fecha último pago"
+        nro_formato: "Número formato"
+        destino_interes: "Destino interés"
+        tipo_garantia: "Tipo garantía"
+        usuario_id: "Usuario id"
+        saldo_minimo: "Saldo mínimo"
+        nro_producto: "Número producto"
+        valor_efectivo_credito: "Valor efectivo crédito"
+
+      balance:
+        year: "Año"
+        db: "Débito"
+        cr: "Crédito"
+
+      movimiento:
+        nro_producto: "Número producto"
+        db: "Débito"
+        cr: "Crédito"
+        nro_transaccion: "Número transacción"
+        nro_registro: "Número registro"
+        nro_auditoria: "Número auditoría"
+        nro_conciliacion: "Número conciliación"
+        refer1: "Número referencia"
+
+  countries:
+    AC: "Isla de la Ascensión"
+    AD: "Andorra"
+    AE: "Emiratos Árabes Unidos"
+    AF: "Afganistán"
+    AG: "Antigua y Barbuda"
+    AI: "Anguila"
+    AL: "Albania"
+    AM: "Armenia"
+    AN: "Antillas Neerlandesas"
+    AO: "Angola"
+    AQ: "Antártida"
+    AR: "Argentina"
+    AS: "Samoa Americana"
+    AT: "Austria"
+    AU: "Australia"
+    AW: "Aruba"
+    AX: "Islas Åland"
+    AZ: "Azerbaiyán"
+    BA: "Bosnia-Herzegovina"
+    BB: "Barbados"
+    BD: "Bangladesh"
+    BE: "Bélgica"
+    BF: "Burkina Faso"
+    BG: "Bulgaria"
+    BH: "Bahréin"
+    BI: "Burundi"
+    BJ: "Benín"
+    BL: "San Bartolomé"
+    BM: "Bermudas"
+    BN: "Brunéi"
+    BO: "Bolivia"
+    BQ: "Caribe neerlandés"
+    BR: "Brasil"
+    BS: "Bahamas"
+    BT: "Bután"
+    BV: "Isla Bouvet"
+    BW: "Botsuana"
+    BY: "Bielorrusia"
+    BZ: "Belice"
+    CA: "Canadá"
+    CC: "Islas Cocos"
+    CD: "República Democrática del Congo"
+    CD: "Congo [República Democrática del Congo]"
+    CF: "República Centroafricana"
+    CG: "Congo - Brazzaville"
+    CG: "Congo [República]"
+    CH: "Suiza"
+    CI: "Costa de Marfil"
+    CI: "Costa de Marfil"
+    CK: "Islas Cook"
+    CL: "Chile"
+    CM: "Camerún"
+    CN: "China"
+    CO: "Colombia"
+    CP: "Isla Clipperton"
+    CR: "Costa Rica"
+    CU: "Cuba"
+    CV: "Cabo Verde"
+    CW: "Curazao"
+    CX: "Isla Christmas"
+    CY: "Chipre"
+    CZ: "República Checa"
+    DE: "Alemania"
+    DG: "Diego García"
+    DJ: "Yibuti"
+    DK: "Dinamarca"
+    DM: "Dominica"
+    DO: "República Dominicana"
+    DZ: "Argelia"
+    EA: "Ceuta y Melilla"
+    EC: "Ecuador"
+    EE: "Estonia"
+    EG: "Egipto"
+    EH: "Sáhara Occidental"
+    ER: "Eritrea"
+    ES: "España"
+    ET: "Etiopía"
+    EU: "Unión Europea"
+    FI: "Finlandia"
+    FJ: "Fiyi"
+    FK: "Islas Malvinas"
+    FK: "Islas Malvinas [Islas Falkland]"
+    FM: "Micronesia"
+    FO: "Islas Feroe"
+    FR: "Francia"
+    GA: "Gabón"
+    GB: "Reino Unido"
+    GD: "Granada"
+    GE: "Georgia"
+    GF: "Guayana Francesa"
+    GG: "Guernsey"
+    GH: "Ghana"
+    GI: "Gibraltar"
+    GL: "Groenlandia"
+    GM: "Gambia"
+    GN: "Guinea"
+    GP: "Guadalupe"
+    GQ: "Guinea Ecuatorial"
+    GR: "Grecia"
+    GS: "Islas Georgia del Sur y Sandwich del Sur"
+    GT: "Guatemala"
+    GU: "Guam"
+    GW: "Guinea-Bissau"
+    GY: "Guyana"
+    HK: "Región Administrativa Especial de Hong Kong de la República Popular China"
+    HK: "Hong Kong"
+    HM: "Islas Heard y McDonald"
+    HN: "Honduras"
+    HR: "Croacia"
+    HT: "Haití"
+    HU: "Hungría"
+    IC: "Islas Canarias"
+    ID: "Indonesia"
+    IE: "Irlanda"
+    IL: "Israel"
+    IM: "Isla de Man"
+    IN: "India"
+    IO: "Territorio Británico del Océano Índico"
+    IQ: "Iraq"
+    IR: "Irán"
+    IS: "Islandia"
+    IT: "Italia"
+    JE: "Jersey"
+    JM: "Jamaica"
+    JO: "Jordania"
+    JP: "Japón"
+    KE: "Kenia"
+    KG: "Kirguistán"
+    KH: "Camboya"
+    KI: "Kiribati"
+    KM: "Comoras"
+    KN: "San Cristóbal y Nieves"
+    KP: "Corea del Norte"
+    KR: "Corea del Sur"
+    KW: "Kuwait"
+    KY: "Islas Caimán"
+    KZ: "Kazajistán"
+    LA: "Laos"
+    LB: "Líbano"
+    LC: "Santa Lucía"
+    LI: "Liechtenstein"
+    LK: "Sri Lanka"
+    LR: "Liberia"
+    LS: "Lesoto"
+    LT: "Lituania"
+    LU: "Luxemburgo"
+    LV: "Letonia"
+    LY: "Libia"
+    MA: "Marruecos"
+    MC: "Mónaco"
+    MD: "Moldavia"
+    ME: "Montenegro"
+    MF: "San Martín"
+    MG: "Madagascar"
+    MH: "Islas Marshall"
+    MK: "Macedonia"
+    MK: "Macedonia [ERYM]"
+    ML: "Mali"
+    MM: "Myanmar [Birmania]"
+    MN: "Mongolia"
+    MO: "Región Administrativa Especial de Macao de la República Popular China"
+    MO: "Macao"
+    MP: "Islas Marianas del Norte"
+    MQ: "Martinica"
+    MR: "Mauritania"
+    MS: "Montserrat"
+    MT: "Malta"
+    MU: "Mauricio"
+    MV: "Maldivas"
+    MW: "Malaui"
+    MX: "México"
+    MY: "Malasia"
+    MZ: "Mozambique"
+    NA: "Namibia"
+    NC: "Nueva Caledonia"
+    NE: "Níger"
+    NF: "Isla Norfolk"
+    NG: "Nigeria"
+    NI: "Nicaragua"
+    NL: "Países Bajos"
+    'NO': "Noruega"
+    NP: "Nepal"
+    NR: "Nauru"
+    NU: "Isla Niue"
+    NZ: "Nueva Zelanda"
+    OM: "Omán"
+    PA: "Panamá"
+    PE: "Perú"
+    PF: "Polinesia Francesa"
+    PG: "Papúa Nueva Guinea"
+    PH: "Filipinas"
+    PK: "Pakistán"
+    PL: "Polonia"
+    PM: "San Pedro y Miquelón"
+    PN: "Islas Pitcairn"
+    PR: "Puerto Rico"
+    PS: "Territorios Palestinos"
+    PT: "Portugal"
+    PW: "Palau"
+    PY: "Paraguay"
+    QA: "Qatar"
+    QO: "Territorios alejados de Oceanía"
+    RE: "Reunión"
+    RO: "Rumanía"
+    RS: "Serbia"
+    RU: "Rusia"
+    RW: "Ruanda"
+    SA: "Arabia Saudí"
+    SB: "Islas Salomón"
+    SC: "Seychelles"
+    SD: "Sudán"
+    SE: "Suecia"
+    SG: "Singapur"
+    SH: "Santa Elena"
+    SI: "Eslovenia"
+    SJ: "Svalbard y Jan Mayen"
+    SK: "Eslovaquia"
+    SL: "Sierra Leona"
+    SM: "San Marino"
+    SN: "Senegal"
+    SO: "Somalia"
+    SR: "Surinam"
+    SS: "Sudán del Sur"
+    ST: "Santo Tomé y Príncipe"
+    SV: "El Salvador"
+    SX: "Sint Maarten"
+    SY: "Siria"
+    SZ: "Suazilandia"
+    TA: "Tristán da Cunha"
+    TC: "Islas Turcas y Caicos"
+    TD: "Chad"
+    TF: "Territorios Australes Franceses"
+    TG: "Togo"
+    TH: "Tailandia"
+    TJ: "Tayikistán"
+    TK: "Tokelau"
+    TL: "Timor Oriental"
+    TL: "Timor Oriental"
+    TM: "Turkmenistán"
+    TN: "Túnez"
+    TO: "Tonga"
+    TR: "Turquía"
+    TT: "Trinidad y Tobago"
+    TV: "Tuvalu"
+    TW: "Taiwán"
+    TZ: "Tanzania"
+    UA: "Ucrania"
+    UG: "Uganda"
+    UM: "Islas menores alejadas de los Estados Unidos"
+    US: "Estados Unidos"
+    UY: "Uruguay"
+    UZ: "Uzbekistán"
+    VA: "Ciudad del Vaticano"
+    VC: "San Vicente y las Granadinas"
+    VE: "Venezuela"
+    VG: "Islas Vírgenes Británicas"
+    VI: "Islas Vírgenes de los Estados Unidos"
+    VN: "Vietnam"
+    VU: "Vanuatu"
+    WF: "Wallis y Futuna"
+    WS: "Samoa"
+    YE: "Yemen"
+    YT: "Mayotte"
+    ZA: "Sudáfrica"
+    ZM: "Zambia"
+    ZW: "Zimbabue"
+    ZZ: "Región desconocida"
+
+  number:
+    format:
+      separator: "."
+      delimiter: ","
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+
+    # Used in number_to_human_size() and number_to_human()
+    human:
+      format:
+        delimiter: ""
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+
+      # Used in number_to_human_size()
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+
+      # Used in number_to_human()
+      decimal_units:
+        format: "%n %u"
+        units:
+          # femto: Quadrillionth
+          # pico: Trillionth
+          # nano: Billionth
+          # micro: Millionth
+          # mili: Thousandth
+          # centi: Hundredth
+          # deci: Tenth
+          unit: ""
+          # ten:
+          # one: Ten
+          # other: Tens
+          # hundred: Hundred
+          thousand: Thousand
+          million: Million
+          billion: Billion
+          trillion: Trillion
+          quadrillion: Quadrillion

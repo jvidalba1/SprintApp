@@ -19,35 +19,35 @@
 %table
 	%thead
 		%tr
-			%th Time Period
-			%th Billable Hours
-			%th Hours Worked
+			%th Tiempo
+			%th Horas fact
+			%th Horas tra
 	%tr
-		%td(class="bold") Today
-		%td= number_to_human @stats[:today][:billable]
+		%td(class="bold") Hoy
+		%td= number_to_human(@stats[:today][:billable])
 		%td= number_to_human @stats[:today][:worked]
 	%tr
-		%td(class="bold") This Week
+		%td(class="bold") Esta semana
 		%td= number_to_human @stats[:this_week][:billable]
 		%td= number_to_human @stats[:this_week][:worked]
 	%tr
-		%td(class="bold") Last Week
+		%td(class="bold") Última semana
 		%td= number_to_human @stats[:last_week][:billable]
 		%td= number_to_human @stats[:last_week][:worked]
 	%tr
-		%td(class="bold") This Month
+		%td(class="bold") Este mes
 		%td= number_to_human @stats[:this_month][:billable]
 		%td= number_to_human @stats[:this_month][:worked]	
 	%tr
-		%td(class="bold") Last Month
+		%td(class="bold") Último mes
 		%td= number_to_human @stats[:last_month][:billable]
 		%td= number_to_human @stats[:last_month][:worked]
 	%tr
-		%td(class="bold") This Year
+		%td(class="bold") Este año
 		%td= number_to_human @stats[:this_year][:billable]
 		%td= number_to_human @stats[:this_year][:worked]
 		
 %p
 	%strong
 		%em
-			This information is for internal purposes only.
+			Esta información es solo para uso interno
