@@ -1,5 +1,5 @@
 <div id="login">
-  <h2><%= title "#{active_admin_application.site_title} Login" %></h2>
+  <h2><%= title "#{active_admin_application.site_title} Inicio" %></h2>
 
   <% scope = Devise::Mapping.find_scope!(resource_name) %>
   <%= active_admin_form_for(resource, :as => resource_name, :url => send(:"#{scope}_session_path"), :html => { :id => "session_new" }) do |f| 
@@ -9,7 +9,7 @@
       f.input :remember_me, :as => :boolean, :if => false
     end
     f.buttons do
-      f.commit_button "Login"
+      f.commit_button "Entrar"
     end
   end
   %>
@@ -20,8 +20,8 @@
 <% content_for :footer do %>
 	<div class="tweets">
 		<div>
-			<strong class="sprint_app">Copyright (c) 2013 </strong>
-			<span class="tweet"><a class="view-more" href="http://macfanatic.github.com/SprintApp/">SprintApp &raquo;</a></span>
+			<strong class="sprint_app">2013 </strong>
+			<span class="tweet"><a class="view-more" href="http://jvidalba.herokuapp.com">URL to web site</a></span>
 		</div>
 	</div>
 <% end %>

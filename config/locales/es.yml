@@ -1,4 +1,13 @@
 es:
+  activerecord:
+    model:
+      project:
+        one: "Proyecto"
+        other: "Proyectos"
+    attributes:
+      AdminUser:
+        password: contrasenia
+
   links:
     Dashboard: "Tablero"
     Calendar: "Calendario"
@@ -275,6 +284,7 @@ es:
       short: ! '%d de %B, %Y a las %H:%M hrs'
       shorter: ! '%d de %B, %Y '
     pm: pm
+
   will_paginate:
     previous_label: << Anterior
     next_label: Siguiente >>
