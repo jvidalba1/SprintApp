@@ -1,8 +1,7 @@
+# == Postgres config
 pg: &pg
-  adapter: mysql2
-  encoding: utf8
-  username: sps_admin
-  password: sps_admin_db
+  adapter: postgresql
+  encoding: unicode
   pool: 5
 
 development:
@@ -12,7 +11,28 @@ development:
 test:
   <<: *pg
   database: sprint_app_test
-  
+  user: postgres
+
 cucumber:
   <<: *pg
   database: sprint_app_cucumber
+
+# == Mysql conf
+#pg: &pg
+#  adapter: mysql2
+#  encoding: utf8
+#  username: sps_admin
+#  password: sps_admin_db
+#  pool: 5
+#
+#development:
+#  <<: *pg
+#  database: sprint_app_development
+#
+#test:
+#  <<: *pg
+#  database: sprint_app_test
+#
+#cucumber:
+#  <<: *pg
+#  database: sprint_app_cucumber
