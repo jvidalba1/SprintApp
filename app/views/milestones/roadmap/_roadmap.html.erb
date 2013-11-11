@@ -1,24 +1,24 @@
-<em>Ticket Progress</em>
+<em>Progreso del ticket</em>
 <%= milestone_progress_indicator(milestone) %>	
-<p><strong><%= milestone.tickets.overdue.count %> Overdue / <%= milestone.num_open_tickets %> Open / <%= milestone.num_closed_tickets %> Closed</strong></p>
+<p><strong><%= milestone.tickets.overdue.count %> Atrasado / <%= milestone.num_open_tickets %> Abierto / <%= milestone.num_closed_tickets %> Cerrado</strong></p>
 
-<em>Budget Progress</em>
+<em>Progreso del presupuesto</em>
 <%= milestone_budget_progress_indicator(milestone) %>	
-<p><strong><%= milestone.actual_time %> Actual / <%= milestone.estimated_time %> Estimated</strong></p>
+<p><strong><%= milestone.actual_time %> Actual / <%= milestone.estimated_time %> Estimado</strong></p>
 
-<em>Billable vs Non-Billable</em>
+<em>Facturado vs No-facturado</em>
 <%= billable_progress_indicator(milestone) %>
-<p><strong><%= milestone.billable_time %> Billable / <%= milestone.non_billable_time %> Non-Billable / <%= milestone.actual_time %> Total Time Spent</strong></p>
+<p><strong><%= milestone.billable_time %> Facturado / <%= milestone.non_billable_time %> No-facturado / <%= milestone.actual_time %> Tiempo total gastado</strong></p>
 
 <% unless milestone.tickets.overdue.count == 0 %>
-	<h3>Overdue Tickets (<%= milestone.tickets.overdue.count %>)</h3>
+	<h3>Tickets atrasados (<%= milestone.tickets.overdue.count %>)</h3>
 	<%= content_tag 'table', :for => milestone do %>
 		<%= render :partial => "milestones/roadmap/ticket", :collection => milestone.tickets.overdue  %>
 	<% end %>
 <% end %>
 
 <% unless milestone.num_open_tickets == 0 %>
-	<h3>Open Tickets (<%= milestone.num_open_tickets %>)</h3>
+	<h3>Tickets abiertos (<%= milestone.num_open_tickets %>)</h3>
 	<%= content_tag 'table', :for => milestone do %>
 		<%= render :partial => "milestones/roadmap/ticket", :collection => milestone.tickets.active  %>
 	<% end %>

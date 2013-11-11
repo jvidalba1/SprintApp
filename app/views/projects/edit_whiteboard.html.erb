@@ -1,7 +1,7 @@
 <%=
 active_admin_form_for @project, url: save_whiteboard_project_path(@project) do |f|
-	f.inputs "Project Whiteboard" do
-		f.input :whiteboard, input_html: { class: "ckeditor" }, label: false
+	f.inputs "Tablero del proyecto" do
+		f.input :whiteboard, :label => "Tablero", input_html: { class: "ckeditor" }, label: false
 	end
 	f.buttons
 end

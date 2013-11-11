@@ -5,11 +5,11 @@
   <%= active_admin_form_for(resource, :as => resource_name, :url => send(:"#{scope}_session_path"), :html => { :id => "session_new" }) do |f| 
     f.inputs do
       Devise.authentication_keys.each { |key| f.input key }
-      f.input :password
-      f.input :remember_me, :as => :boolean, :if => false
+      f.input :password, :label => "Contraseña"
+      f.input :remember_me, :label => "Recordar?", :as => :boolean, :if => false
     end
     f.buttons do
-      f.commit_button "Entrar"
+      f.commit_button "Aceptar"
     end
   end
   %>

@@ -1,12 +1,10 @@
 es:
   activerecord:
-    model:
-      project:
-        one: "Proyecto"
-        other: "Proyectos"
+    models:
+      Project: "pro"
     attributes:
-      AdminUser:
-        password: contrasenia
+      project:
+        name: nombre
 
   links:
     Dashboard: "Tablero"

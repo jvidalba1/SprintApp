@@ -1,19 +1,19 @@
 <%=
 semantic_form_for @project, :html => { :class => "filter_form consolidated_form" }, :builder => ActiveAdmin::FormBuilder do |f| 
-  f.inputs "Project Information", :class => "inputs consolidated" do 
-		f.input :number, as: :string, hint: "This is a unique number identifying the project for your records and is not editable after a project is created", input_html: { disabled: !@project.new_record? && @project.number.present? }
-    f.input :name, hint: "The project number and client name will prefix this name wherever the project is used"
-    f.input :start_date, :label => "Start Date", :as => :datepicker, :wrapper_html => { :class => "filter_form_field filter_date_range field-row" }
-    f.input :end_date, :label => "End Date", :as => :datepicker, :wrapper_html => { :class => "filter_form_field filter_date_range field-row" }
-		f.input :client, :wrapper_html => { :class => 'cleared' }, :collection => Client.all
-		f.input :description, :input_html => { class: :ckeditor }
+  f.inputs "Información del proyecto", :class => "inputs consolidated" do
+    f.input :number, :label => "Número", as: :string, hint: "Este es un número único de identificación del proyecto para tus registros y no puede ser editado despues de creado", input_html: { disabled: !@project.new_record? && @project.number.present? }
+    f.input :name, :label => "Nombre", hint: "El número del proyecto y el nombre del cliente se antepondra al nombre del proyecto donde sea usado"
+    f.input :start_date, :label => "Fecha de inicio", :as => :datepicker, :wrapper_html => { :class => "filter_form_field filter_date_range field-row" }
+    f.input :end_date, :label => "Fecha fin", :as => :datepicker, :wrapper_html => { :class => "filter_form_field filter_date_range field-row" }
+    f.input :client, :label => "Cliente", :wrapper_html => { :class => 'cleared' }, :collection => Client.all
+    f.input :description, :label => "Descripción", :input_html => { class: :ckeditor }
   end 
-	f.inputs "Internal / Accounting" do
-		f.input :hourly_rate, :hint => "All time assigned to tickets for this project will use this hourly rate. Defaults to the hourly rate dictated to for the client, if left empty.", label: "Hourly Rate", as: :string
-		f.input :product_owner, :label => "Product Owner", :required => true, :collection => AdminUser.active.admin, hint: "The product owner is responsible for overseeing this project and will see this project on his/her dashboard."
+	f.inputs "Interno / Contabilidad" do
+		f.input :hourly_rate, :hint => "Todo el tiempo asignado a los tickets para este proyecto usará este hourly rate. Si se deja vacío el valor predeterminado sera el configurado para este cliente", label: "Hourly Rate", as: :string
+		f.input :product_owner, :label => "Product Owner", :required => true, :collection => AdminUser.active.admin, hint: "El product owner es responsable is responsible de supervisar este proyecto y ver el proyecto en su Tablero"
 	end
-	f.inputs "Members" do
-		f.input :members, :as => :check_boxes, :collection => AdminUser.active, hint: "Project members can access the project and all its resources and may be assigned tickets."
+	f.inputs "Miembros" do
+		f.input :members, :label => "Miembros", :as => :check_boxes, :collection => AdminUser.active, hint: "Los miembros del proyecto pueden acceder al proyecto y todos sus recursos y tal vez asignar tickets"
 	end
   f.buttons 
 end 

@@ -63,12 +63,12 @@ Timetracker::Application.configure do
   config.action_mailer.default_url_options = { :host => 'sprintapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => 'smtp.sendgrid.net',
+    :address => 'smtp.gmail.com',
     :port => '587',
     :authentication => :plain,
-    :user_name => ENV['SENDGRID_USERNAME'],
-    :password => ENV['SENDGRID_PASSWORD'],
-    :domain => 'sprintapp.com'
+    :user_name => "jmateovidalb",
+    :password => "deportivo",
+    :domain => 'gmail.com'
   }
     
 end
