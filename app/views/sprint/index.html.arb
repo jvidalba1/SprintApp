@@ -8,7 +8,7 @@ controller.filter :name
 controller.filter :created_at
 controller.filter :updated_at
 
-h3 "Current Sprint"
+h3 "Sprint actual sprint/index.html.arb"
 h4 { Sprint.start_date.humanize + ' - ' + Sprint.end_date.humanize }
 
 text_node(scope_buttons *controller.scopes, scope_count: false) unless current_admin_user.employee?
