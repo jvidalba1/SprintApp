@@ -3,26 +3,26 @@
 		= hidden_field_tag "collection[]", id
 	%fieldset.inputs
 		%legend 
-			%span Editing Multiple Tickets
+			%span Editar múltiples tickets
 		%ol
 			%li.input
-				= label_tag :status, "Status"
+				= label_tag :status, "Estado"
 				= select_tag :status, options_from_collection_for_select(@statuses, :id, :name), prompt: @prompt
 			%li.input
-				= label_tag :assignee, "Assignee"
+				= label_tag :assignee, "Asignar a"
 				= select_tag :assignee, options_from_collection_for_select(@project.members.sorted, :id, :full_name), prompt: @prompt
 			%li.input
-				= label_tag :tracker, "Tracker"
+				= label_tag :tracker, "Categoría"
 				= select_tag :tracker, options_from_collection_for_select(@categories, :id, :name), prompt: @prompt
 			%li.input
-				= label_tag :priority, "Priority"
+				= label_tag :priority, "Prioridad"
 				= select_tag :priority, options_from_collection_for_select(@priorities, :id, :name), prompt: @prompt
 			%li.input
-				= label_tag :billable
+				= label_tag :billable, "Facturable"
 				= select_tag :billable, options_for_select({Billable: true, Nonbillable: false}), prompt: @prompt
 	%fieldset.buttons
 		%ol
 			%li.commit.button
-				= submit_tag "Update Tickets", disable_with: "Saving...", data: { confirm: "Update these tickets?" }
+				= submit_tag "Actualizar tickets", disable_with: "Guardando...", data: { confirm: "¿Actualizar estos tickets?" }
 			%li.cancel
-				= link_to "Cancel", collection_path
+				= link_to "Cancelar", collection_path

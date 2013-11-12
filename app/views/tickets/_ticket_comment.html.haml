@@ -5,7 +5,7 @@
 		%br/
 		%span= created_by(ticket_comment)
 		%br/
-		= link_to image_tag("i_pencil.png"), update_comment_tickets_path(format: :js), class: 'edit-ticket-history', title: 'Edit this comment', "data-time" => ticket_comment.time, "data-id" => ticket_comment.id if current_admin_user.admin?
+		= link_to image_tag("i_pencil.png"), update_comment_tickets_path(format: :js), class: 'edit-ticket-history', title: 'Editar este comentario', "data-time" => ticket_comment.time, "data-id" => ticket_comment.id if current_admin_user.admin?
 		.cleared
 		
 	.ticket-history
@@ -13,7 +13,7 @@
 		- changes = formatted_changeset_for_version(version)
 		- unless changes.empty?
 			.ticket-history-changeset.ticket-history-comment
-				%span Changes
+				%span Cambios
 				%ul.changeset
 					- changes.each do |text|
 						%li= raw(text)
