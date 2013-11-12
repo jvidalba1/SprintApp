@@ -8,9 +8,9 @@ module AdminHelper
 
   def restricted_default_actions_for_resource(resource)
      actions = ""
-     actions += link_to( "View", resource_path(resource), :class => "member_link" ) if can?( :view, resource )
-     actions += link_to( "Edit", edit_resource_path(resource), :class => "member_link" ) if can?( :edit, resource )
-     actions += link_to( "Delete", resource_path(resource), :method => :delete, :confirm => I18n.t('active_admin.delete_confirmation'), :class => "member_link") if can?( :destroy, resource )
+     actions += link_to( "Ver", resource_path(resource), :class => "member_link" ) if can?( :view, resource )
+     actions += link_to( "Editar", edit_resource_path(resource), :class => "member_link" ) if can?( :edit, resource )
+     actions += link_to( "Borrar", resource_path(resource), :method => :delete, :confirm => I18n.t('active_admin.delete_confirmation'), :class => "member_link") if can?( :destroy, resource )
      actions.html_safe
   end
 

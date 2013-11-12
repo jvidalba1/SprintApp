@@ -126,7 +126,7 @@ ActiveAdmin.register AdminUser, :sort_order => "email_desc" do
     end
   end
   
-  sidebar :avatar_and_login_info, only: [:show, :edit] do
+  sidebar "Perfil e información de inicio de sesión", only: [:show, :edit] do
     attributes_table_for resource do
       row(:avatar) do
         text_node avatar(resource)
@@ -153,7 +153,7 @@ ActiveAdmin.register AdminUser, :sort_order => "email_desc" do
     end    
   end
   
-  sidebar :user_statistics, only: [:show, :edit] do
+  sidebar "Estadísticas de usuario", only: [:show, :edit] do
     text_node( render "shared/user_statistics", user: resource )    
   end
   
