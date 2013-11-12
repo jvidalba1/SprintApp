@@ -1,7 +1,13 @@
-<p>This calendar allows you to easily browse open tickets, filtering by several attributes to create complex queries, to visualize workflow in your organization.</p>
+<p>
+  Este calendario te permite buscar facilmente tickets abiertos, filtrando por muchos atributos para crear consultas complejas, para visualizar el flujo de trabajo.
+</p>
 <% if can?(:create, Ticket) %>
-<p><strong>You can drag and drop tickets to change the start date, or drag from the right edge to resize the ticket to change the end date.</strong></p>
+<p><strong>
+  Tu puedes arrastrar y soltar (drag and drop) tickets para cambiar la fecha de inicio, o arrastrar desde el borde derecho para cambiar la fecha de fin.
+</strong></p>
 <% else%>
-<p><strong>The tickets shown are only tickets assigned to you.</strong></p>
+<p><strong>
+  Los tickets mostrados son solo tickets asignados a ti
+</strong></p>
 <% end %>
-<p>Click a ticket to view more information.</p>
+<p>Clic a cualquier ticket para ver más información.</p>

@@ -1,24 +1,25 @@
+#encoding: utf-8
 ActiveAdmin.register_page "Calendar" do
   
   menu :priority => 2
   
   action_item do
-    link_to "New Ticket", new_ticket_path if can?(:create, Ticket)
+    link_to "Nuevo ticket", new_ticket_path if can?(:create, Ticket)
   end
     
   content do
     
     if resource_class == Ticket
-      controller.filter :project, :as => :select, :collection => proc { Project.active.accessible_by(current_ability) }
-      controller.filter :ticket_priority, :collection => proc { TicketPriority.all }
-      controller.filter :billable
-      controller.filter :ticket_category, :collection => proc { TicketCategory.all }
-      controller.filter :milestone, :collection => proc { Milestone.where(project_id: Project.accessible_by(current_ability).pluck(:id)) }
-      controller.filter :assignee, :collection => proc { AdminUser.sorted } unless current_admin_user.employee?
-      controller.filter :name
+      controller.filter :project, :label => "Proyecto", :as => :select, :collection => proc { Project.active.accessible_by(current_ability) }
+      controller.filter :ticket_priority, :label => "Prioridad del ticket", :collection => proc { TicketPriority.all }
+      controller.filter :billable, :label => "Facturable"
+      controller.filter :ticket_category, :label => "Categoría del ticket", :collection => proc { TicketCategory.all }
+      controller.filter :milestone, :label => "Hito", :collection => proc { Milestone.where(project_id: Project.accessible_by(current_ability).pluck(:id)) }
+      controller.filter :assignee, :label => "Asignado a:", :collection => proc { AdminUser.sorted } unless current_admin_user.employee?
+      controller.filter :name, :label => "Nombre"
     else
-      controller.filter :project, :as => :select, :collection => proc { Project.active.accessible_by(current_ability) }
-      controller.filter :name
+      controller.filter :project, :label => "Proyecto", :as => :select, :collection => proc { Project.active.accessible_by(current_ability) }
+      controller.filter :name, :label => "Nombre"
     end
         
     image_tag "ajax_loader.gif", :id => "loading"
