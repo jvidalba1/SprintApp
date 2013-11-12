@@ -4,9 +4,9 @@
 %hr.noprint
 
 - c = GoogleCharts::Charts::Line.new self, @comments
-- c.title "#{@ticket.informative_name} Report: #{@start.humanize} - #{@end.humanize}"
-- c.label "Date", :first
-- c.value "Hours Worked", lambda { |day| day.last.values.sum.to_f.round(2) }
+- c.title "#{@ticket.informative_name} Reporte: #{@start.humanize} - #{@end.humanize}"
+- c.label "Fecha", :first
+- c.value "Horas trabajas", lambda { |day| day.last.values.sum.to_f.round(2) }
 = raw c.to_html
 
 %br.noprint
@@ -18,9 +18,9 @@
 	.panel_contents
 		%table
 			%tr
-				%th.narrow Date
-				%th.narrow Hours Worked
-				%th Hours Worked per Employee
+				%th.narrow Fecha
+				%th.narrow Horas trabajadas
+				%th Horas trabajadas por empleado
 			- @comments.each do |comment|
 				%tr
 					%td.bold= comment.first.humanize
