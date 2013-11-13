@@ -1,8 +1,9 @@
+#encoding: utf-8
 module TicketsHelper
 
   def ticket_billable_status_tag(ticket)
     color = ticket.billable? ? :green : :warn
-    sprintapp_status_tag ticket.billable? ? "YES" : "NO", color
+    sprintapp_status_tag ticket.billable? ? "SI" : "NO", color
   end
 
   def health_tag_for_ticket(ticket)
@@ -10,16 +11,16 @@ module TicketsHelper
     percentage = [100, percentage].min
     if percentage == 100
       color = :red
-      title = "Over Budget"
+      title = "Sobre-presupuesto"
     elsif percentage >= 95
       color = :red
-      title = "Almost Over"
+      title = "Casi sobre"
     elsif percentage >= 65
       color = :orange
-      title = "Watch Closely"
+      title = "Atención"
     else
       color = :green
-      title = "Great"
+      title = "Excelente"
     end
     sprintapp_status_tag title, color
   end
@@ -128,18 +129,18 @@ module TicketsHelper
 
           old_val = klass.find(before_after.first).name rescue 'Unknown'
           new_val = klass.find(before_after.last).name rescue 'Unknown'
-          changes << "<strong>#{pretty_attr.titleize}</strong> changed from <em>#{old_val}</em> to <em>#{new_val}</em>."
+          changes << "<strong>#{pretty_attr.titleize}</strong> cambiado de <em>#{old_val}</em> a <em>#{new_val}</em>."
         else
-          unless attr == "description"        
+          unless attr == "description"
             if before_after.first.nil?
-              changes << "<strong>#{attr.titleize}</strong> was set to <em>#{better_format(before_after.last)}</em>."
+              changes << "<strong>#{attr.titleize}</strong> se estableció en <em>#{better_format(before_after.last)}</em>."
             elsif before_after.last.nil?
-              changes << "<strong>#{attr.titleize}</strong> was removed."
+              changes << "<strong>#{attr.titleize}</strong> fue removido"
             else
-              changes << "<strong>#{attr.titleize}</strong> changed from <em>#{better_format(before_after.first)} to #{better_format(before_after.last)}</em>."
+              changes << "<strong>#{attr.titleize}</strong> cambiado de <em>#{better_format(before_after.first)} a #{better_format(before_after.last)}</em>."
             end
           else
-            changes << "<em>Description updated</em>."
+            changes << "<em>Descripción actualizada</em>."
           end
         end
       end

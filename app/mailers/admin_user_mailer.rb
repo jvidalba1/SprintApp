@@ -10,7 +10,7 @@ class AdminUserMailer < ActionMailer::Base
   private
     
     def subject
-      "Welcome to SprintApp!"
+      "¡Bienvenido a <NombreApp>!"
     end
   
 end

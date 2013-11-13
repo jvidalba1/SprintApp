@@ -1,21 +1,22 @@
 #encoding: utf-8
-ActiveAdmin.register Client, :sort_order => "name_asc" do
+ActiveAdmin.register Client, :label => "Cliente", :sort_order => "name_asc" do
   
   # for use with cancan
   controller.authorize_resource
   controller.resources_configuration[:self][:finder] = :find_by_url!
-  
+
   menu :label => "Clientes", :parent => "Administración", :if => proc { can?( :manage, Client) }
-    
+
   filter :name, :label => "Nombre"
   filter :created_at, :label => "Creado"
   filter :updated_at, :label => "Actualizado"
-  
+  index :title => 'Your_page_name'
   action_item :only => [:show] do
     link_to "Contactos", client_contacts_path( resource )
   end
   
-  index do |t|
+  index :title => "Clientes" do
+
     selectable_column
     column("Nombre", sortable: :name) { |client| link_to truncate(client.name, length: 35), client, title: client.name }
     column "Creado", :sortable => :created_at do |client|
@@ -31,7 +32,7 @@ ActiveAdmin.register Client, :sort_order => "name_asc" do
   
   form :partial => "form"
   
-  show :title => :name do
+  show :title => "Clientes" do
     
     panel "Detalle de cliente" do
       attributes_table_for resource do
@@ -53,5 +54,5 @@ ActiveAdmin.register Client, :sort_order => "name_asc" do
     text_node(render :partial => "addresses/show", :locals => { :address => resource.address })
     
   end
-  
+
 end

@@ -1,3 +1,4 @@
+#encoding: utf-8
 ActiveAdmin.register Contact, :sort_order => "name_asc" do
   
   # for use with cancan
@@ -13,7 +14,7 @@ ActiveAdmin.register Contact, :sort_order => "name_asc" do
   
   index do |t|
     selectable_column
-    column :name
+    column :name, :label => "oelo"
     column :email, :sortable => :email do |contact|
       link_to contact.email, "mailto:#{contact.email}"
     end
