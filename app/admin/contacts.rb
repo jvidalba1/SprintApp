@@ -6,21 +6,23 @@ ActiveAdmin.register Contact, :sort_order => "name_asc" do
   
   belongs_to :client, finder: :find_by_url!
   
-  filter :name
-  filter :email
-  filter :phone
-  filter :created_at
-  filter :updated_at
+  filter :name, :label => "Nombre"
+  filter :email, :label => "Email"
+  filter :phone, :label => "Teléfono"
+  filter :created_at, :label => "Creado"
+  filter :updated_at, :label => "Actualizado"
   
   index do |t|
     selectable_column
-    column :name, :label => "oelo"
+    column("Nombre") do
+      resource.name
+    end
     column :email, :sortable => :email do |contact|
       link_to contact.email, "mailto:#{contact.email}"
     end
-    column(:phone, sortable: :phone) { |contact| number_to_phone contact.phone }
-    column(:cell, sortable: :cell) { |contact| number_to_phone contact.cell }
-    column "Created", :sortable => :created_at do |client|
+    column("Teléfono", sortable: :phone) { |contact| number_to_phone contact.phone }
+    column("Celular", sortable: :cell, :label => "Celular") { |contact| number_to_phone contact.cell }
+    column "Creado", :sortable => :created_at do |client|
       client.created_at.humanize
     end
     restricted_actions_column(t)
@@ -28,16 +30,18 @@ ActiveAdmin.register Contact, :sort_order => "name_asc" do
   
   show :title => :name do
     
-    panel "Contact Details" do
+    panel "Detalle de contacto" do
       attributes_table_for resource do
-        row :name
-        row(:phone) { number_to_phone resource.phone }
-        row(:cell) { number_to_phone resource.cell }
+        row "Nombre" do
+          resource.name
+        end
+        row("Teléfono") { number_to_phone resource.phone }
+        row("Celular") { number_to_phone resource.cell }
         row :email
-        row :created_at do
+        row "Creado" do
           resource.created_at.humanize
         end
-        row :updated_at do
+        row "Actualizado" do
           resource.updated_at.humanize
         end
       end

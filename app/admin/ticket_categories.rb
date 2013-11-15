@@ -1,9 +1,10 @@
+#encoding: utf-8
 ActiveAdmin.register TicketCategory, :sort_order => "name_asc" do
   
   # for use with cancan
   controller.authorize_resource
   
-  menu :parent => "Administration", :if => proc { can?( :manage, TicketCategory ) }
+  menu :parent => "Administración", :if => proc { can?( :manage, TicketCategory ) }
     
   filter :name
   filter :created_at

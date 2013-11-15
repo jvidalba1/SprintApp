@@ -7,7 +7,7 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
   belongs_to :project, finder: :find_by_url!, optional: true
   before_filter :find_ticket, only: [:move, :start_timer, :stop_timer, :ticket_time]
   
-  menu :parent => "Projects", :label => "All Tickets"
+  menu :parent => "Proyectos", :label => "Tickets"
     
   form :partial => "form"
   

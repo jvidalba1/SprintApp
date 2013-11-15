@@ -1,3 +1,4 @@
+#encoding: utf-8
 ActiveAdmin.register Project, :sort_order => "number_asc" do
     
   menu :priority => 4
@@ -8,15 +9,15 @@ ActiveAdmin.register Project, :sort_order => "number_asc" do
     
   before_filter :set_project, only: [:whiteboard, :edit_whiteboard, :save_whiteboard, :switch, :archive, :unarchive, :roadmap]
     
-  filter :number
-  filter :client, :collection => proc { Client.all }
+  filter :number, :label => "Número"
+  filter :client, :label => "Cliente", :collection => proc { Client.all }
   filter :product_owner, :collection => proc { AdminUser.admin }
-  filter :name
-  filter :start_date
-  filter :end_date
-  filter :desciprtion
-  filter :created_at
-  filter :updated_at
+  filter :name, :label => "Nombre"
+  filter :start_date, :label => "Fecha de inicio"
+  filter :end_date, :label => "Fecha fin"
+  filter :description, :label => "Descripción"
+  filter :created_at, :label => "Creado"
+  filter :updated_at, :label => "Actualizado"
   
   scope :all
   scope :active, default: true
@@ -25,9 +26,9 @@ ActiveAdmin.register Project, :sort_order => "number_asc" do
   action_item :only => [:show] do
     if controller.current_ability.can?(:archive, Project)
       if resource.completed?
-        link_to "Activate", unarchive_project_path(resource), confirm: "Are you sure you want to make this project active?"
+        link_to "Activar", unarchive_project_path(resource), confirm: "¿Esta seguro que quiere activar este proyecto?"
       else
-        link_to "Deactivate", archive_project_path(resource), confirm: "Are you sure you want to archive this project?\nYou can still view all project data, or unarchive the project later."
+        link_to "Desactivar", archive_project_path(resource), confirm: "¿Esta seguro que quiere archivar este proyecto? \nAún puedes ver todos los datos del proyecto, o desarchivar el proyecto luego."
       end
     end
   end
@@ -38,14 +39,14 @@ ActiveAdmin.register Project, :sort_order => "number_asc" do
     end
   end
   
-  batch_action :archive, { if: proc { can? :archive, Project }, confirm: 'Are you sure you want to archived these projects?' } do |selected_ids|
+  batch_action :archive, { if: proc { can? :archive, Project }, confirm: '¿Esta seguro que quiere archivar estos proyecto?' } do |selected_ids|
     Project.find(selected_ids).each { |u| u.archive! }
-    redirect_to collection_path, notice: "Succesfully archived #{selected_ids.count} projects."
+    redirect_to collection_path, notice: "#{selected_ids.count} proyectos archivados exitosamente."
   end
   
-  batch_action :unarchive, { if: proc{ can? :unarchive, Project }, confirm: 'Are you sure you want to unarchive these projects?' } do |selected_ids|
+  batch_action :unarchive, { if: proc{ can? :unarchive, Project }, confirm: '¿Esta seguro que quiere desarchivar estos proyectos?' } do |selected_ids|
     Project.find(selected_ids).each { |u| u.unarchive! }
-    redirect_to collection_path, notice: "Successfully unarchived #{selected_ids.count} projects."
+    redirect_to collection_path, notice: "#{selected_ids.count} proyectos desarchivados exitosamente."
   end
   
   batch_action :destroy, { if: proc{ can? :destroy, Project }, priority: 100, confirm: I18n.t('active_admin.batch_actions.delete_confirmation', plural_model: "projects") } do |selected_ids|
@@ -55,9 +56,9 @@ ActiveAdmin.register Project, :sort_order => "number_asc" do
   
   index do |t|
     selectable_column
-    column(:number, sortable: :number) { |project| link_to project.number, project if project.number.present? }
-    column(:client, :sortable => :client_id) { |project| link_to truncate(project.client_name, length: 35), client_path(project.client), title: project.client_name }
-    column(:name, sortable: :name) { |project| link_to truncate(project.name, length: 35), project_path(project), title: project.name }
+    column("Número", sortable: :number) { |project| link_to project.number, project if project.number.present? }
+    column("Cliente", :sortable => :client_id) { |project| link_to truncate(project.client_name, length: 35), client_path(project.client), title: project.client_name }
+    column("Nombre", sortable: :name) { |project| link_to truncate(project.name, length: 35), project_path(project), title: project.name }
     column :product_owner, :sortable => :product_owner_id
     column "" do |project|
       restricted_default_actions_for_resource(project) + link_to("Tickets", project_tickets_path(project))
@@ -67,43 +68,43 @@ ActiveAdmin.register Project, :sort_order => "number_asc" do
   form :partial => 'form'
   
   show :title => proc { truncate resource.display_name, length: 50 } do
-   panel "Project Details" do
+   panel "Detalle de proyecto" do
       attributes_table_for resource do
-        row :number
-        row :name
-        row(:client) { link_to resource.client.display_name, resource.client }
-        row(:hourly_rate) { number_to_currency resource.hourly_rate } unless current_admin_user.employee?
-        row :start_date do
+        row("Número") { resource.number }
+        row("Nombre") { resource.name}
+        row("Cliente") { link_to resource.client.display_name, resource.client }
+        row("Estimación por hora") { number_to_currency resource.hourly_rate } unless current_admin_user.employee?
+        row "Fecha de inicio" do
           resource.start_date.humanize
         end
-        row :end_date do
+        row "Fecha fin" do
           resource.safe_end_date
         end
-        row :description do
+        row "Descripción" do
           resource.description.html_safe
         end
       end
     end
   end
   
-  sidebar "Internal / Accounting", :only => [:show] do
+  sidebar "Interno / Contabilidad", :only => [:show] do
     attributes_table_for resource do
-      row :owner do
+      row "Propietario" do
         link_to resource.product_owner.full_name, admin_user_path(resource.product_owner)
       end
-      row :completed do
-        status_tag resource.completed? ? 'Completed' : 'In Progress', resource.completed? ? :green : :warn
+      row "Estado" do
+        status_tag resource.completed? ? 'Completado' : 'En progreso', resource.completed? ? :green : :warn
       end
     end
   end
-  
-  sidebar "Members", :only => [:show] 
-  
-  sidebar "Project Roadmap", :only => [:roadmap] do
-    para "A project roadmap outlines progress for the overall project, and progress for all active milestones so you can easily view the health of the project."
-    para strong("Ticket Progress") + text_node("is a health meter to show you what tickets are overdue.")
-    para strong("Budget Progress") + text_node("quickly displays whether the project is over or under budget.")
-    para strong("Billable vs Non-Billable") + text_node("displays the ratio of billable to non-billable time spent.")
+
+  sidebar :members, :only => [:show]
+
+  sidebar "Roadmap de proyecto", :only => [:roadmap] do
+    para "Un Roadmap del proyecto describe el progreso de todo el proyecto, y el progreso para todos los hitos activos para que puedas ver facilmente la vida del proyecto."
+    para strong("Progreso ticket") + text_node("es un indicador de estado para mostrar los tickets que están atrasados.")
+    para strong("Progreso de presupuesto") + text_node("muestra rapidamente si el proyecto está por encima o por debajo del presupuesto")
+    para strong("Facturable vs No-Facturable") + text_node("muesta la relación de Facturable a No-Facturable tiempo completo")
   end
   
   sidebar :project_information, only: :roadmap do
@@ -116,42 +117,42 @@ ActiveAdmin.register Project, :sort_order => "number_asc" do
   end
   
   member_action :roadmap do
-    redirect_to projects_path, :alert => "Unable to retrieve desired project." if @project.nil?
+    redirect_to projects_path, :alert => "No se puede recuperar proyecto deseado." if @project.nil?
   end
   
   member_action :whiteboard do
-    redirect_to projects_path, alert: "Unable to retrieve desired project.", status: :not_found if @project.nil?
+    redirect_to projects_path, alert: "No se puede recuperar proyecto deseado.", status: :not_found if @project.nil?
   end
   
   member_action :edit_whiteboard do
-    redirect_to projects_path, alert: "Unable to retrieve desired project.", status: :not_found if @project.nil?
+    redirect_to projects_path, alert: "No se puede recuperar proyecto deseado.", status: :not_found if @project.nil?
   end
   
   member_action :save_whiteboard, method: :put do
-    redirect_to projects_path, alert: "Unable to retrieve desired project.", status: :not_found if @project.nil?
+    redirect_to projects_path, alert: "No se puede recuperar proyecto deseado.", status: :not_found if @project.nil?
 
     if @project.update_attributes(params[:project])
-      redirect_to whiteboard_project_path(@project), notice: "Updated project whiteboard."
+      redirect_to whiteboard_project_path(@project), notice: "Pizarra de proyecto actualizada."
     else
-      redirect_to whiteboard_project_path(@project), alert: "Failed updating project whiteboard."
+      redirect_to whiteboard_project_path(@project), alert: "Error para actualizar pizarra del proyecto."
     end
   end
   
   member_action :archive do
     unless @project.nil?
       @project.archive!
-      redirect_to projects_path, :notice => "Project archived."
+      redirect_to projects_path, :notice => "Proyecto archivado."
     else
-      redirect_to projects_path, :alert => "Unable to retrieve desired project."
+      redirect_to projects_path, :alert => "No se puede recuperar proyecto deseado."
     end
   end
   
   member_action :unarchive do
     unless @project.nil?
       @project.unarchive!
-      redirect_to projects_path, :notice => "Project unarchived."
+      redirect_to projects_path, :notice => "Proyecto desarchivado."
     else
-      redirect_to projects_path, :alert => "Unable to retrieve desired project."
+      redirect_to projects_path, :alert => "No se puede recuperar proyecto deseado."
     end
   end
   

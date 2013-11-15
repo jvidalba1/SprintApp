@@ -1,8 +1,9 @@
+#encoding: utf-8
 ActiveAdmin.register Team, :sort_order => "name_asc" do
   
   controller.authorize_resource
   
-  menu :parent => "Administration", :if => proc { can?(:index, Team) }
+  menu :parent => "Administración", :if => proc { can?(:index, Team) }
     
   filter :name
   filter :description

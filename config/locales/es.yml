@@ -114,70 +114,70 @@ es:
 
   unauthorized:
     manage:
-      admin_user: "You are not allowed to manage other user accounts."
-      ticket: "You are only allowed access to tickets belonging to projects you are a member of."
+      admin_user: "No estás autorizado para manager otras cuentas de usuarios."
+      ticket: "Solo tienes acceso a los tickets de los proyectos que tu eres miembro."
     change_password:
-      admin_user: "You are not allowed to change passwords for other user accounts."
+      admin_user: "No estás autorizado para cambiar contraseñas de otras cuentas de usuario."
     archive:
-      project: "You are not allowed to archive projects."
+      project: "No estás autorizado para archivar proyectos."
     unarchive:
-      project: "You are not allowed to unarchive projects."
+      project: "No estás autorizado para desarchivar proyectos."
     complete:
-      milestone: "You are not allowed to complete milestones."
+      milestone: "No estás autorizado para completar hitos."
     revive:
-      milestone: "You are not allowed to revive milestones."
+      milestone: "No estás autorizado para revivir (?) hitos."
 
   errors:
     messages:
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      already_confirmed: "was already confirmed, please try signing in"
-      not_locked: "was not locked"
+      expired: "ha expirado, por favor pida una nueva"
+      not_found: "No encontrado"
+      already_confirmed: "ya fue confirmado, por favor trata de iniciar sesión"
+      not_locked: "no fue bloqueado"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: "1 error prohibido que %{resource} sea guardado:"
+        other: "%{count} errores prohibido que %{resource} sea guardado:"
 
   devise:
     failure:
-      already_authenticated: 'You are already signed in.'
-      unauthenticated: 'You need to sign in or sign up before continuing.'
-      unconfirmed: 'You have to confirm your account before continuing.'
-      locked: 'Your account is locked.'
-      invalid: 'Invalid email or password.'
-      invalid_token: 'Invalid authentication token.'
-      timeout: 'Your session expired, please sign in again to continue.'
-      inactive: 'Your account has not been activated yet.'
-      suspended: 'Your account has been suspended.'
+      already_authenticated: 'Ya has iniciado sesión.'
+      unauthenticated: 'Necesitas iniciar sesión o registrarte antes de continuar.'
+      unconfirmed: 'Tienes que confirmar tu cuenta antes de continuar.'
+      locked: 'Tu cuenta esta bloqueada.'
+      invalid: 'Email o contraseñas inválido.'
+      invalid_token: 'Token de autenticación inválido.'
+      timeout: 'Tu sesión ha expirado, por favor inicia sesión otra vez para continuar.'
+      inactive: 'Tu cuenta no ha sido activada aún.'
+      suspended: 'Tu cuenta ha sido suspendida.'
     sessions:
-      signed_in: 'Signed in successfully.'
-      signed_out: 'Signed out successfully.'
+      signed_in: 'Sesión iniciada exitosamente'
+      signed_out: 'Sesión cerrada exitosamente'
     passwords:
-      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
-      updated: 'Your password was changed successfully. You are now signed in.'
-      updated_not_active: 'Your password was changed successfully.'
-      send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
+      send_instructions: 'Recibirás un email en pocos minutos con instrucciones acerca de cómo resetear tu contraseña.'
+      updated: 'Tu contraseña fue cambiada exitosamente, ya has iniciado sesión.'
+      updated_not_active: 'Tu contraseña fue cambiada exitosamente.'
+      send_paranoid_instructions: "Si su email existe en nuestra base de datos, recibirá un link para la recuperación de la contraseña en su email."
     confirmations:
-      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
-      send_paranoid_instructions: 'If your e-mail exists on our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
-      confirmed: 'Your account was successfully confirmed. You are now signed in.'
+      send_instructions: 'Recibirás un email en pocos minutos con instrucciones acerca de cómo confirmar tu cuenta.'
+      send_paranoid_instructions: 'Si su email existe en nuestra base de datos, recibirá un email en pocos minutos con instrucciones acerca de cómo confirmar su cuenta.'
+      confirmed: 'Tu cuenta fue confirmada exitosamente, ya has iniciado sesión.'
     registrations:
-      signed_up: 'Welcome! You have signed up successfully.'
-      updated: 'You updated your account successfully.'
-      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+      signed_up: '¡Bienvenido! Te has registrado exitosamente.'
+      updated: 'Actualización de cuenta exitosa.'
+      destroyed: '¡Chao! Tu cuenta fue cancelada exitosamente. Esperamos verte de nuevo proximamente.'
     unlocks:
-      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
-      unlocked: 'Your account was successfully unlocked. You are now signed in.'
-      send_paranoid_instructions: 'If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.'
+      send_instructions: 'Recibirás un email en pocos minutos con intrucciones acerca de cómo desbloquear tu cuenta.'
+      unlocked: 'Tu cuenta fue desbloqueada exitosamente, ya has iniciado sesión.'
+      send_paranoid_instructions: 'Si su cuenta existe, recibirá un email en pocos minutos con instrucciones acerca de cómo desbloquearla.'
     omniauth_callbacks:
-      success: 'Successfully authorized from %{kind} account.'
-      failure: 'Could not authorize you from %{kind} because "%{reason}".'
+      success: 'Autorización exitosa de %{kind} account.'
+      failure: 'No se pudo autorizarte de %{kind} porque "%{reason}".'
     mailer:
       confirmation_instructions:
-        subject: 'Confirmation instructions'
+        subject: 'Instrucciones de confirmación.'
       reset_password_instructions:
-        subject: 'Reset password instructions'
+        subject: 'Instrucciones para resetear contraseña.'
       unlock_instructions:
-        subject: 'Unlock Instructions'
+        subject: 'Instrucciones para desbloquear.'
 
   date:
     abbr_day_names:
