@@ -85,7 +85,7 @@ module ActiveAdmin
                                   
                   opts = res == "milestone" ?  { :class => "current" } : nil
                   li opts do
-                    link_to "Milestones", project_milestones_path( current_project )
+                    link_to "Hito", project_milestones_path( current_project )
                   end
                   
                   opts = ( res == "project" and current_page?( :action => :show ) ) ? { :class => "current" } : nil
@@ -95,12 +95,12 @@ module ActiveAdmin
                   
                   opts = ( res == "project" and current_page?( :action => :whiteboard ) ) ? { :class => "current" } : nil
                   li opts do
-                    link_to "Whiteboard", whiteboard_project_path( current_project )
+                    link_to "Pizarra", whiteboard_project_path( current_project )
                   end  
                   
                   opts = res == "project_file"  ? { :class => "current" } : nil
                   li opts do
-                    link_to "Documents", project_project_files_path( current_project )
+                    link_to "Documentos", project_project_files_path( current_project )
                   end           
                 
                 end
