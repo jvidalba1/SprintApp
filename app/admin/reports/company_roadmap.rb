@@ -1,6 +1,6 @@
 ActiveAdmin.register_page "CompanyRoadmap" do
   
-  menu label: "Company Roadmap", parent: "Reports", if: proc { can? :index, :company_roadmap }
+  menu label: "Company Roadmap", parent: "Reportes", if: proc { can? :index, :company_roadmap }
   
   controller.authorize_resource class: false
   

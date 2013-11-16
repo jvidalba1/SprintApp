@@ -1,6 +1,6 @@
 ActiveAdmin.register_page "HoursWorkedReport" do
   
-  menu label: "Hours Worked Report", parent: "Reports", if: proc { can? :index, :hours_worked_report }
+  menu label: "Hours Worked Report", parent: "Reportes", if: proc { can? :index, :hours_worked_report }
   
   controller.authorize_resource class: false
   controller.before_filter :employees

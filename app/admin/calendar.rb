@@ -1,7 +1,7 @@
 #encoding: utf-8
 ActiveAdmin.register_page "Calendar" do
   
-  menu :priority => 2
+  menu :label => "Calendario", :priority => 2
   
   action_item do
     link_to "Nuevo ticket", new_ticket_path if can?(:create, Ticket)

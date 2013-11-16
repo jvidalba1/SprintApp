@@ -1,6 +1,6 @@
 ActiveAdmin.register_page "TicketReport" do
   
-  menu label: "Ticket Report", parent: "Reports", if: proc { can? :index, :ticket_report }
+  menu label: "Ticket Report", parent: "Reportes", if: proc { can? :index, :ticket_report }
   controller.authorize_resource class: false, except: :tickets
   controller.before_filter :projects
   

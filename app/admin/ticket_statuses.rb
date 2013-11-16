@@ -6,9 +6,9 @@ ActiveAdmin.register TicketStatus, :sort_order => 'name_asc' do
   
   menu :parent => "Administración", :if => proc { can?( :manage, TicketStatus ) }
     
-  filter :name
-  filter :created_at
-  filter :updated_at
+  filter :name, :label => "Nombre"
+  filter :created_at, :label => "Creado"
+  filter :updated_at, :label => "Actualizado"
   
   scope :all, :default => true
   scope(:open) { |statuses| statuses.active }
@@ -16,9 +16,9 @@ ActiveAdmin.register TicketStatus, :sort_order => 'name_asc' do
   
   index do |t|
     selectable_column
-    column(:name, sortable: :name) { |item| link_to truncate(item.name, length: 35), item, title: item.name }
-    column 'Open Status', :sortable => :active do |status|
-      status_tag status.active? ? "Active" : "Closed", status.active? ? :green : :red
+    column("Nombre", sortable: :name) { |item| link_to truncate(item.name, length: 35), item, title: item.name }
+    column 'Estado: abierto', :sortable => :active do |status|
+      status_tag status.active? ? "Activo" : "Cerrado", status.active? ? :green : :red
     end
     restricted_actions_column(t)
   end
@@ -26,9 +26,11 @@ ActiveAdmin.register TicketStatus, :sort_order => 'name_asc' do
   form :partial => "form"
   
   show :title => :name do
-    panel "Status Details" do
+    panel "Detalle de estado" do
       attributes_table_for resource do
-        row :name
+        row "Nombre" do
+          resource.name
+        end
       end
     end
   end

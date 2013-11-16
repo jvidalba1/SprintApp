@@ -1,6 +1,6 @@
 ActiveAdmin.register_page "EmployeeTimesheet" do
   
-  menu label: "Employee Timesheet", parent: "Reports", if: proc { can? :index, :employee_timesheet }
+  menu label: "Employee Timesheet", parent: "Reportes", if: proc { can? :index, :employee_timesheet }
   
   controller.authorize_resource class: false
   controller.before_filter :employees

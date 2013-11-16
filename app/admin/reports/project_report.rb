@@ -1,6 +1,6 @@
 ActiveAdmin.register_page "ProjectReport" do
   
-  menu label: "Project Report", parent: "Reports", if: proc { can? :index, :project_report }
+  menu label: "Project Report", parent: "Reportes", if: proc { can? :index, :project_report }
   controller.authorize_resource class: false
   controller.before_filter :projects
   

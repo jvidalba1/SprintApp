@@ -1,7 +1,7 @@
 #encoding: utf-8
 ActiveAdmin.register Project, :sort_order => "number_asc" do
     
-  menu :priority => 4
+  menu :label => "Proyectos", :priority => 4
   
   # for use with cancan
   controller.authorize_resource find_by: :url

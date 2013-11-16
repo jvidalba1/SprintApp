@@ -1,6 +1,6 @@
 ActiveAdmin.register_page "Sprint" do
     
-  menu :label => "Current Sprint", :priority => 3
+  menu :label => "Sprint actual", :priority => 3
   
   controller do
     
