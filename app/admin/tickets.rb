@@ -1,3 +1,4 @@
+#encoding: utf-8
 ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
   
   # for use with cancan
@@ -7,7 +8,7 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
   belongs_to :project, finder: :find_by_url!, optional: true
   before_filter :find_ticket, only: [:move, :start_timer, :stop_timer, :ticket_time]
   
-  menu :parent => "Proyectos", :label => "Tickets"
+  menu :parent => "Projects", :label => "Tickets"
     
   form :partial => "form"
   
@@ -18,25 +19,25 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
   scope :overdue
 
   filter :number, label: "Ticket ID#"
-  filter :project, :as => :select, :collection => proc { @project.nil? ? Project.accessible_by(current_ability).active : [@project] }
-  filter :ticket_priority, :collection => proc { TicketPriority.all }
-  filter :milestone, :collection => proc { @project.milestones.active.sorted rescue Milestone.where(project_id: Project.accessible_by(current_ability).pluck(:id)).active }
-  filter :billable, :as => :select
-  filter :ticket_category, :collection => proc { TicketCategory.all }
-  filter :status, :collection => proc { TicketStatus.all }
-  filter :assignee, :collection => proc { @project.members.active.sorted rescue AdminUser.active }
-  filter :start_date
-  filter :end_date
-  filter :estimated_time
-  filter :actual_time
-  filter :name
-  filter :description
-  filter :created_at
-  filter :updated_at
+  filter :project, :label => "Proyecto", :as => :select, :collection => proc { @project.nil? ? Project.accessible_by(current_ability).active : [@project] }
+  filter :ticket_priority, :label => "Prioridad", :collection => proc { TicketPriority.all }
+  filter :milestone, :label => "Hito", :collection => proc { @project.milestones.active.sorted rescue Milestone.where(project_id: Project.accessible_by(current_ability).pluck(:id)).active }
+  filter :billable, :label => "Facturable", :as => :select
+  filter :ticket_category, :label => "Categoría", :collection => proc { TicketCategory.all }
+  filter :status, :label => "Estado", :collection => proc { TicketStatus.all }
+  filter :assignee, :label => "Asignado a", :collection => proc { @project.members.active.sorted rescue AdminUser.active }
+  filter :start_date, :label => "Fecha de inicio"
+  filter :end_date, :label => "Fecha fin"
+  filter :estimated_time, :label => "Tiempo estimado"
+  filter :actual_time, :label => "Tiempo real"
+  filter :name, :label => "Nombre"
+  filter :description, :label => "Descripción"
+  filter :created_at, :label => "Creado"
+  filter :updated_at, :label => "Actualizado"
   
   action_item only: [:show, :edit] do
     if can? :advanced_edit, resource
-      link_to "Move", move_ticket_path(resource)
+      link_to "Mover", move_ticket_path(resource)
     end
   end
   
@@ -55,7 +56,7 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
     @statuses = TicketStatus.all
     @categories = TicketCategory.all
     @priorities = TicketPriority.all
-    @prompt = "No Change"
+    @prompt = "Sin cambios"
     render 'multiple_edit_form'
   end
   
@@ -65,47 +66,47 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
   end
   
   csv do
-    column(:id) { |t| t.number }
-    column(:name) { |t| t.name }
-    column(:description) { |t| truncate strip_tags(t.description), length: 300 }
-    column(:priority) { |t| ticket_priority t }
-    column(:status) { |t| ticket_status t }
-    column(:assignee) { |t| ticket_assignee t }
-    column(:tracker) { |t| t.ticket_category.display_name }
-    column(:estimated_time)
-    column(:actual_time)
-    column(:start) { |t| t.start_date }
-    column(:end) { |t| t.end_date }
-    column(:created_at)
-    column(:updated_at)
+    column("id") { |t| t.number }
+    column("nombre") { |t| t.name }
+    column("descripcion") { |t| truncate strip_tags(t.description), length: 300 }
+    column("prioridad") { |t| ticket_priority t }
+    column("estado") { |t| ticket_status t }
+    column("asignado") { |t| ticket_assignee t }
+    column("categoria") { |t| t.ticket_category.display_name }
+    column("estimado") { |t| t.estimated_time }
+    column("real") { |t| t.actual_time}
+    column("Inicio") { |t| t.start_date }
+    column("Fin") { |t| t.end_date }
+    column("Creado") { |t| t.created_at }
+    column("Actualizado") { |t| t.updated_at }
   end
   
   index do |t|
     selectable_column
     column("ID", sortable: :number) { |ticket| link_to ticket.number, [ticket.project, ticket], title: ticket.name }
-    column("Name", :sortable => :name) { |ticket| link_to( truncate(ticket.name, :length => 25), project_ticket_path(ticket.project, ticket), title: ticket.name ) }
-    column("Priority", :sortable => :ticket_priority_id) { |ticket| priority_tag_for_ticket(ticket) }
-    column("Billable", sortable: :billable) { |ticket| ticket_billable_status_tag(ticket) }
-    column :assignee, :sortable => :assignee_id
-    column("Status", :sortable => :status_id) { |ticket| status_tag_for_ticket_status(ticket) }
-    column("Tracker", :sortable => :ticket_category_id) { |ticket| ticket.ticket_category.display_name }
-    column("Health", :sortable => :budget_progress) { |ticket| simple_budget_progress_indicator(ticket.actual_time, ticket.estimated_time) }
-    column("Start", :sortable => :start_date) { |ticket| status_tag( ticket.start_date.humanize, colorize_ticket_by_start_date(ticket) ) }
-    column("Due", :sortable => :end_date) { |ticket| status_tag_for_ticket_by_due_date(ticket) }
+    column("Nombre", :sortable => :name) { |ticket| link_to( truncate(ticket.name, :length => 25), project_ticket_path(ticket.project, ticket), title: ticket.name ) }
+    column("Prioridad", :sortable => :ticket_priority_id) { |ticket| priority_tag_for_ticket(ticket) }
+    column("Facturable", sortable: :billable) { |ticket| ticket_billable_status_tag(ticket) }
+    column("Asignado", :sortable => :assignee_id) { |ticket| ticket.ticket_category.display_name }
+    column("Estado", :sortable => :status_id) { |ticket| status_tag_for_ticket_status(ticket) }
+    column("Categoria", :sortable => :ticket_category_id) { |ticket| ticket.ticket_category.display_name }
+    column("Vida", :sortable => :budget_progress) { |ticket| simple_budget_progress_indicator(ticket.actual_time, ticket.estimated_time) }
+    column("Inicio", :sortable => :start_date) { |ticket| status_tag( ticket.start_date.humanize, colorize_ticket_by_start_date(ticket) ) }
+    column("Vencimiento", :sortable => :end_date) { |ticket| status_tag_for_ticket_by_due_date(ticket) }
     restricted_actions_column(t)
   end
   
   show :title => :display_name do
-    panel 'Ticket Details: %s' % title do
+    panel 'Detalle de Ticket: %s' % title do
       div :class => "attributes_table" do
         table :for => resource do |t|
           tr(:id => 'ticket_name') do
             th(:colspan => 4) { resource.name }
           end
           tr do
-            th { 'Tracker' }
+            th { 'Categoria' }
             td { resource.ticket_category.display_name }
-            th { 'Milestone' }
+            th { 'Hito' }
             td do
               if resource.milestone.present?
                 link_to( resource.milestone.display_name, roadmap_project_milestone_path(resource.project, resource.milestone) ) 
@@ -115,9 +116,9 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
             end
           end
           tr do
-            th { 'Status' }
+            th { 'Estado' }
             td { status_tag_for_ticket_status(resource) }
-            th { 'Assignee' }
+            th { 'Asignado' }
             td do
               if resource.assignee
                link_to resource.assignee.full_name, admin_user_path(resource.assignee)
@@ -125,19 +126,19 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
             end
           end
           tr do
-            th { 'Priority' }
+            th { 'Prioridad' }
             td { priority_tag_for_ticket(resource) }
-            th { 'Author' }
+            th { 'Autor' }
             td { created_by resource }
           end
           tr do
-            th { 'Start' }
+            th { 'Inicio' }
             td { status_tag( ticket.start_date.humanize, colorize_ticket_by_start_date(resource) ) }
-            th { 'Due' }
+            th { 'Vencimiento' }
             td { status_tag_for_ticket_by_due_date(resource) }
           end
           tr do
-            th { 'Description' }
+            th { 'Descripción' }
             td(:colspan => 3) { resource.description.html_safe }
           end
         end
@@ -150,13 +151,13 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
     
     form action: edit_project_ticket_path(resource.project, resource), method: :get, id: :edit_ticket_button do
       div class: :buttons do
-        input type: :submit, class: :update, value: "Edit Ticket"
+        input type: :submit, class: :update, value: "Editar Ticket"
       end
     end
     
   end
   
-  sidebar "Budget & Timing", :only => :show do
+  sidebar "Presupuesto y calendario", :only => :show do
     @ticket_timer = TicketTimer.where(admin_user_id: current_admin_user.id, ticket_id: resource.id)
     render partial: "budget_and_timing_sidebar", locals: { wrapper_class: @ticket_timer.present? ? :stop : :start }
   end
@@ -243,7 +244,7 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
   collection_action :edit_multiple, method: :post do
     
     collection = Ticket.find(params[:collection])
-    redirect_to collection_path, alert: "No tickets were modified" and return if params[:status].blank? && params[:tracker].blank? && params[:priority].blank? && params[:assignee].blank? && params[:billable].blank?
+    redirect_to collection_path, alert: "Ningún ticket fue modificado" and return if params[:status].blank? && params[:tracker].blank? && params[:priority].blank? && params[:assignee].blank? && params[:billable].blank?
     
     saved = 0
     collection.each do |ticket|
@@ -259,7 +260,7 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
       
     end
     
-    redirect_to collection_path, notice: "Updated #{saved} of #{params[:collection].length} tickets"
+    redirect_to collection_path, notice: "Actualizado #{saved} de #{params[:collection].length} tickets"
     
   end
   
@@ -273,7 +274,7 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
       chain
     end
     def new
-      redirect_to(tickets_path, alert: "You are not allowed to access this page.") and return if params[:project_id].blank?
+      redirect_to(tickets_path, alert: "No tienes autorización para acceder a esta página.") and return if params[:project_id].blank?
       new! do
         @ticket = Ticket.new
       end

@@ -14,7 +14,7 @@ class Ticket < ActiveRecord::Base
   has_many :ticket_timers, dependent: :destroy
   
   accepts_nested_attributes_for :ticket_comments
-  
+
   validates :name, :ticket_category, :ticket_priority, :status, :start_date, :description, :presence => true
   validates :estimated_time, :numericality => { :greater_than_or_equal_to => 0 }, :presence => true
   validates :actual_time, :numericality => { :greater_than_or_equal_to => 0 }, :allow_blank => true
