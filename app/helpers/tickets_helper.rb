@@ -126,18 +126,19 @@ module TicketsHelper
           else
             pretty_attr.constantize rescue return changes
           end
-
+          p "+-+-+-+-+-+-+-+-+ pretty_attr: #{pretty_attr} attr: #{attr}"
           old_val = klass.find(before_after.first).name rescue 'Unknown'
           new_val = klass.find(before_after.last).name rescue 'Unknown'
-          changes << "<strong>#{pretty_attr.titleize}</strong> cambiado de <em>#{old_val}</em> a <em>#{new_val}</em>."
+          changes << "<strong>#{Ticket.human_attribute_name(attr)}</strong> cambiado de <em>#{old_val}</em> a <em>#{new_val}</em>."
         else
           unless attr == "description"
             if before_after.first.nil?
-              changes << "<strong>#{attr.titleize}</strong> se estableció en <em>#{better_format(before_after.last)}</em>."
+              #Ticket.human_attribute_name("end_date")
+              changes << "<strong>#{Ticket.human_attribute_name(attr)}</strong> se estableció en <em>#{better_format(before_after.last)}</em>."
             elsif before_after.last.nil?
-              changes << "<strong>#{attr.titleize}</strong> fue removido"
+              changes << "<strong>#{Ticket.human_attribute_name(attr)}</strong> fue removido"
             else
-              changes << "<strong>#{attr.titleize}</strong> cambiado de <em>#{better_format(before_after.first)} a #{better_format(before_after.last)}</em>."
+              changes << "<strong>#{Ticket.human_attribute_name(attr)}</strong> cambiado de <em>#{better_format(before_after.first)} a #{better_format(before_after.last)}</em>."
             end
           else
             changes << "<em>Descripción actualizada</em>."

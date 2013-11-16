@@ -54,3 +54,24 @@ es:
         subject: 'Instrucciones de cambio de contraseña'
       unlock_instructions:
         subject: 'Instrucciones de desbloqueo'
+
+  activerecord:
+    models:
+      ticket: Ticket
+    attributes:
+      ticket:
+        name: "Nombre"
+        end_date: "Fecha fin"
+        ticket_category_id: "Categoria"
+        ticket_priority_id: "Prioridad"
+        status_id: "Estado"
+        start_date: "Fecha inicial"
+        description: "Descripción"
+        estimated_time: "Tiempo estimado"
+        actual_time: "Tiempo real"
+        number: "Número"
+        assignee: "Asignado"
+        milestone_id: "Hito"
+        billable: "Facturable"
+        project_id: "Proyecto"
+        budget_progress: "Progreso presupuesto"

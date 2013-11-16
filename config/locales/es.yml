@@ -773,3 +773,24 @@ es:
           billion: Billion
           trillion: Trillion
           quadrillion: Quadrillion
+
+  activerecord:
+    models:
+      ticket: Ticket
+    attributes:
+      ticket:
+        name: Nombre
+        end_date: "Fecha fin"
+        ticket_category: "Categoria"
+        ticket_priority: "Prioridad"
+        status: "Estado"
+        start_date: "Fecha inicial"
+        description: "Descripción"
+        estimated_time: "Tiempo estimado"
+        actual_time: "Tiempo real"
+        number: "Número"
+        assignee: "Asignado"
+        milestone: "Hito"
+        billable: "Facturable"
+        project: "Proyecto"
+        budget_progress: "Progreso presupuesto"
