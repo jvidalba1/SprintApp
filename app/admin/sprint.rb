@@ -1,3 +1,4 @@
+#encoding: utf-8
 ActiveAdmin.register_page "Sprint" do
     
   menu :label => "Sprint actual", :priority => 3
@@ -135,7 +136,7 @@ ActiveAdmin.register_page "Sprint" do
   end
   
   sidebar :filters    
-  sidebar :sprint_statistics do
+  sidebar "Estadísticas de sprint" do
     
     project_ids = Project.accessible_by(current_ability)
     @tickets = Ticket.where(project_id: project_ids).current_sprint
@@ -146,6 +147,8 @@ ActiveAdmin.register_page "Sprint" do
     render :partial => 'sprint_statistics_sidebar', :locals => { tickets: @tickets, milestones: @milestones, num_assignees: @num_assignees, total_hours: @total_hours }
     
   end
-  sidebar :sprint_help
+  sidebar "Ayuda" do
+    render :partial => 'sprint_help_sidebar'
+  end
     
 end
