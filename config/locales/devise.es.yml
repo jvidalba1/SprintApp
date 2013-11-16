@@ -58,6 +58,11 @@ es:
   activerecord:
     models:
       ticket: Ticket
+      ticket_status: Estados
+      ticket_priority: Prioridades
+      ticket_comment: Comentarios
+      ticket_category: Categorías
+      team: Equipos
     attributes:
       ticket:
         name: "Nombre"
@@ -75,3 +80,6 @@ es:
         billable: "Facturable"
         project_id: "Proyecto"
         budget_progress: "Progreso presupuesto"
+      TicketStatus:
+        name: "nombre"
+        active: "activo"

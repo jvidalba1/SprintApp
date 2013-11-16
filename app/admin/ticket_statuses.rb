@@ -4,7 +4,7 @@ ActiveAdmin.register TicketStatus, :sort_order => 'name_asc' do
   # for use with cancan
   controller.authorize_resource
   
-  menu :parent => "Administración", :if => proc { can?( :manage, TicketStatus ) }
+  menu :label => "Estados de tickets", :parent => "Administración", :if => proc { can?( :manage, TicketStatus ) }
     
   filter :name, :label => "Nombre"
   filter :created_at, :label => "Creado"
@@ -13,7 +13,7 @@ ActiveAdmin.register TicketStatus, :sort_order => 'name_asc' do
   scope :all, :default => true
   scope(:open) { |statuses| statuses.active }
   scope(:closed) { |statuses| statuses.closed }
-  
+
   index do |t|
     selectable_column
     column("Nombre", sortable: :name) { |item| link_to truncate(item.name, length: 35), item, title: item.name }
