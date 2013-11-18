@@ -1,3 +1,4 @@
+#encoding: utf-8
 class TicketMailer < ActionMailer::Base
   
   default from: Settings.email.notifications_sender

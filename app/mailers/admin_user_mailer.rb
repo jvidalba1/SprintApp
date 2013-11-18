@@ -1,3 +1,4 @@
+#encoding: utf-8
 class AdminUserMailer < ActionMailer::Base
   default from: Settings.email.notifications_sender
   layout "mailer"
