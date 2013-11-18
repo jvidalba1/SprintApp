@@ -6,7 +6,7 @@
 - c = GoogleCharts::Charts::Line.new self, @comments
 - c.title "#{@ticket.informative_name} Reporte: #{@start.humanize} - #{@end.humanize}"
 - c.label "Fecha", :first
-- c.value "Horas trabajas", lambda { |day| day.last.values.sum.to_f.round(2) }
+- c.value "Horas trabajadas", lambda { |day| day.last.values.sum.to_f.round(2) }
 = raw c.to_html
 
 %br.noprint

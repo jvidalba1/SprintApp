@@ -1,7 +1,7 @@
 = form_tag ticket_report_view_path, class: "filter_form" do
 	%fieldset(class="inputs")
 		%legend
-			%span Construir reporte de ticket
+			%span Información para reporte de tickets
 		%ol
 			%li.input
 				= label_tag :project_id, "Proyecto: "
@@ -16,4 +16,4 @@
 				= label_tag :end, "Fecha fin: "
 				= text_field_tag :end, params[:end], class: :datepicker
 
-	= submit_tag "Ver Report", class: "noprint"
+	= submit_tag "Ver Reporte", class: "noprint"

@@ -1,14 +1,21 @@
-<%= image_tag "welcome-message.png", id: "welcome_message" %>
+<%# image_tag "welcome-message.png", id: "welcome_message" %>
+<h1>Imagen de bienvenida</h1>
+<h4>¡Bienvenido!</h4>
 
-<h4>Bienvenido</h4>
-<p>I'm delighted that you have chosen to use SprintApp to run your business!</p>
-
-<h4>Getting Started</h4>
-<p>To get started, begin by exploring the navigation at the top of the site. You will find quick access to your organization's information in the <em>Calendar</em> and <em>Current Sprint</em> sections, while the <em>Projects</em> section affords you the most information.</p>
+<h4>Iniciar</h4>
+<p>
+  Para empezar, explore la navegación en la parte superior de la plataforma. Puedes encontrar
+  rapidamente accesos a la información de la empresa en las secciones de <em>Calendario</em> y
+  <em>Sprint actual</em>, mientras que la sección de <em>Proyectos</em> puede encontrar información
+  más detallada.
+</p>
 
 <% if current_admin_user.admin? %>
-<h4>Attention Administrators</h4>
-<p>The <em>Administration</em> allows you, as an administrator, to create other user accounts, tweak settings, manage clients and more.</p>
+<h4>Atención administrador</h4>
+<p>
+  La sección de <em>Administración</em> le permite, como administrador, crear otras cuentas,
+  ajustar configuraciones, manejar clientes y muchas cosas más.
+</p>
 <%end %>
 
-<p><strong><em>This page will not be shown again.</em></strong></p>
+<p><strong><em>Esta página NO se mostrará otra vez, gracias.</em></strong></p>

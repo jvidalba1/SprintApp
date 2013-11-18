@@ -1,7 +1,7 @@
 .project-health
 	%em
 		= truncate(project.display_name, length: 100)
-		%span.right== Remaining: #{number_to_human project.estimated_time - project.actual_time}
+		%span.right== Restante: #{number_to_human project.estimated_time - project.actual_time}
 		.cleared
 		
 	= simple_budget_progress_indicator(project.actual_time, project.estimated_time, true)
@@ -10,4 +10,4 @@
 			= project.actual_time
 			Actual / 
 			= project.estimated_time
-			Estimated
+			Estimado
