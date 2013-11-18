@@ -1,3 +1,4 @@
+#encoding: utf-8
 ActiveAdmin.register ProjectFile, sort_order: "created_at_desc" do
   
   belongs_to :project, finder: :find_by_url!
@@ -19,7 +20,7 @@ ActiveAdmin.register ProjectFile, sort_order: "created_at_desc" do
   end
   
   form do |f|
-    f.inputs "Attachment" do
+    f.inputs "Adjunto" do
       f.input :file
       f.input :description
     end
@@ -27,7 +28,7 @@ ActiveAdmin.register ProjectFile, sort_order: "created_at_desc" do
   end
   
   show do
-    panel "Attachment" do
+    panel "Adjunto" do
       attributes_table_for resource do
         row(:file) { link_to File.basename(resource.file.current_path), resource.file.url, target: "_blank" }
         row(:description)

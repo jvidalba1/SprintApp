@@ -107,7 +107,7 @@ ActiveAdmin.register Project, :sort_order => "number_asc" do
     para strong("Facturable vs No-Facturable") + text_node("muesta la relación de Facturable a No-Facturable tiempo completo")
   end
   
-  sidebar :project_information, only: :roadmap do
+  sidebar "Información del proyecto", only: :roadmap do
     @project = Project.find_by_url! params[:id]
     @tickets = @project.tickets
     @milestones = @project.milestones
