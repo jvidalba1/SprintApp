@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Sprint
 	
 	def self.start_date

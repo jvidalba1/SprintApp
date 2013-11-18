@@ -1,3 +1,4 @@
+#encoding: utf-8
 ActiveAdmin.register Milestone, :sort_order => "start_date_asc" do
   
   # for use with cancan
@@ -29,16 +30,16 @@ ActiveAdmin.register Milestone, :sort_order => "start_date_asc" do
   index do |t|
     selectable_column
     column(:name, sortable: :name) { |m| link_to m.name, [m.project, m] }
-    column "Start Date", :sortable => :start_date do |milestone|
+    column :start_date, :sortable => :start_date do |milestone|
       milestone.start_date.humanize
     end
-    column "End Date", :sortable => :end_date do |milestone|
+    column :end_date, :sortable => :end_date do |milestone|
       milestone.safe_end_date
     end
-    column "Completion" do |milestone|
+    column "Completado" do |milestone|
       milestone_progress_indicator(milestone, false)
     end
-    column "Budget" do |milestone|
+    column "Presupuesto" do |milestone|
       milestone_budget_progress_indicator(milestone, false)
     end
     column "" do |milestone|
@@ -55,17 +56,17 @@ ActiveAdmin.register Milestone, :sort_order => "start_date_asc" do
   end
   
   form :html => { :class => "filter_form consolidated_form" } do |f|
-    f.inputs "Milestone", :class => "inputs consolidated" do
+    f.inputs "Hito", :class => "inputs consolidated" do
       f.input :name
-      f.input :start_date, :label => "Start Date", :as => :datepicker, :wrapper_html => { :class => "filter_form_field filter_date_range field-row" }
-      f.input :end_date, :label => "End Date", :as => :datepicker, :wrapper_html => { :class => "filter_form_field filter_date_range field-row" }
+      f.input :start_date, :as => :datepicker, :wrapper_html => { :class => "filter_form_field filter_date_range field-row" }
+      f.input :end_date, :as => :datepicker, :wrapper_html => { :class => "filter_form_field filter_date_range field-row" }
       f.input :description, :input_html => { class: :ckeditor }, :wrapper_html => { :class => "cleared" }
     end
     f.buttons
   end
   
   show :title => :name do
-    panel "Milestone" do
+    panel "Hito" do
       attributes_table_for resource do
         row :name
         row :start_date
@@ -78,16 +79,16 @@ ActiveAdmin.register Milestone, :sort_order => "start_date_asc" do
     end
   end
   
-  sidebar "Milestone Roadmap", :only => [:roadmap] do
-    para "A milestone roadmap outlines progress for the milestone, as determined from the tickets belonging to this milestone."
-    para strong("Ticket Progress") + text_node("is a health meter illustrating ticket completion progress. More green means you're ahead of schedule, while red means you are behind.")
-    para strong("Budget Progress") + text_node("quickly displays whether the milestone is over or under budget.")
-    para strong("Billable vs Non-Billable") + text_node("displays the ratio of billable to non-billable time spent.")
+  sidebar "Hito - Roadmap", :only => [:roadmap] do
+    para "Un Roadmap para un hito muestra los avances para un logro, esta determinado por los tickets asignados a este hito"
+    para strong("Progreso tickets") + text_node("es un indicador de estado ilustrando el progreso completado de los tickets. Entre más verde significa que está por delante de lo previsto y el rojo significa que está por detrás.")
+    para strong("Progreso presupuesto") + text_node("muestra rapidamente si el hito esta por debajo o por encima del presupuesto.")
+    para strong("Facturable vs No-facturable") + text_node("muestra la relación entre facturable a no-facturable - tiempo empleado")
   end
   
   member_action :roadmap do
     @milestone = Milestone.find_by_url!(params[:id], :include => [:project, :tickets]) rescue nil
-    redirect_to(project_milestones_path(params[:project_id]), :alert => "Could not locate desired milestone.") if @milestone.nil?
+    redirect_to(project_milestones_path(params[:project_id]), :alert => "No se pudo localizar el hito deseado") if @milestone.nil?
   end
   
   member_action :complete do
@@ -95,9 +96,9 @@ ActiveAdmin.register Milestone, :sort_order => "start_date_asc" do
     unless @milestone.nil? 
       @milestone.completed = true
       @milestone.save
-      redirect_to project_milestones_path(@milestone.project), :notice => "Milestone succesfully completed."
+      redirect_to project_milestones_path(@milestone.project), :notice => "Hito completado exitosamente."
     else
-      redirect_to project_milestones_path(params[:project_id]), :alert => "Could not locate desired milestone."
+      redirect_to project_milestones_path(params[:project_id]), :alert => "No se pudo localizar el hito deseado."
     end
   end
   
@@ -106,9 +107,9 @@ ActiveAdmin.register Milestone, :sort_order => "start_date_asc" do
     unless @milestone.nil?
       @milestone.completed = false
       @milestone.save
-      redirect_to project_milestones_path(@milestone.project), :notice => "Milestone succesfully resurrected."
+      redirect_to project_milestones_path(@milestone.project), :notice => "Hito recuperado exitosamente."
     else
-      redirect_to project_milestones_path(params[:project_id]), :alert => "Could not locate desired milestone."
+      redirect_to project_milestones_path(params[:project_id]), :alert => "No se pudo localizar el hito deseado."
     end
   end
   
