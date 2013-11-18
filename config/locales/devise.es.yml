@@ -63,6 +63,13 @@ es:
       ticket_comment: Comentarios
       ticket_category: Categorías
       team: Equipos
+      project: Proyectos
+      project_file: Archivos
+      milestone: Hitos
+      contact: Contactos
+      address: Dirección
+      client: Cliente
+
     attributes:
       ticket:
         name: "Nombre"
@@ -80,6 +87,84 @@ es:
         billable: "Facturable"
         project_id: "Proyecto"
         budget_progress: "Progreso presupuesto"
-      TicketStatus:
-        name: "nombre"
-        active: "activo"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+      ticket_status:
+        name: "Nombre"
+        active: "Activo"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+      ticket_priority:
+        name: "Nombre"
+        weight: "Peso"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+      ticket_comment:
+        body: "Contenido"
+        time: "Tiempo"
+        version_id: "Versión"
+        ticket_id: "Ticket"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+      ticket_category:
+        name: "Nombre"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+      team:
+        name: "Nombre"
+        description: "Descripción"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+      project:
+        name: "Nombre"
+        start_date: "Fecha de inicio"
+        end_date: "Fecha fin"
+        description: "Descripción"
+        client_id: "Cliente"
+        product_owner_id: "Product owner"
+        completed: "Completado"
+        hourly_rate: "Peso por hora"
+        whiteboard: "Pizarra"
+        number: "Número"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+      project_file:
+        file: "Archivo"
+        description: "Descripción"
+        project_id: "Proyecto"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+      milestone:
+        name: "Nombre"
+        start_date: "Fecha de inicio"
+        end_date: "Fecha fin"
+        description: "Descripción"
+        project_id: "Proyecto"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        completed: "Completado"
+      contact:
+        name: "Nombre"
+        addressable_id: "Dirección"
+        client_id: "Cliente"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        cell: "Celda"
+        phone: "Teléfono"
+      address:
+        addressable_type: "Tipo"
+        street: "Dirección"
+        city: "Ciudad"
+        state: "Departamento"
+        zip: "Código zip"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+      admin_user:
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        suspented_at: "Supendido"
+        first_name: "Nombres"
+        last_name: "Apellidos"
+        role: "Rol"
+        time_zone: "Zona horaria"
+        suspension_reason: "Razón suspensión"
