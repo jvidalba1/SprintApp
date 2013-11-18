@@ -1,18 +1,19 @@
+#encoding: utf-8
 ActiveAdmin.register_page "CompanyRoadmap" do
   
-  menu label: "Company Roadmap", parent: "Reportes", if: proc { can? :index, :company_roadmap }
+  menu label: "Roadmap general", parent: "Reportes", if: proc { can? :index, :company_roadmap }
   
   controller.authorize_resource class: false
   
-  sidebar :company_roadmap_help do
-    para "The company roadmap report shows you the health of all open projects for your organization."
-    para "Use this information to quickly determine how your organization as a whole."
+  sidebar "Ayuda" do
+    para "En este reporte se muestra el progreso (salud) de todos los proyectos abiertos"
+    para "Use esta información para determinar rapidamente cómo se encuentran los proyectos actuales"
   end
   
   controller do
     
     def index
-      @page_title = 'Company Roadmap'
+      @page_title = 'Roadmap general'
       @projects = Project.active
       render layout: 'active_admin'
     end

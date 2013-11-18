@@ -1,6 +1,7 @@
+#encoding: utf-8
 ActiveAdmin.register_page "EmployeeTimesheet" do
   
-  menu label: "Employee Timesheet", parent: "Reportes", if: proc { can? :index, :employee_timesheet }
+  menu label: "Timesheet empleados", parent: "Reportes", if: proc { can? :index, :employee_timesheet }
   
   controller.authorize_resource class: false
   controller.before_filter :employees
@@ -24,7 +25,7 @@ ActiveAdmin.register_page "EmployeeTimesheet" do
   controller do
     
     def index
-      @page_title = 'Employee Timesheet'
+      @page_title = 'Timesheet empleados'
       params[:start] ||= Sprint.start_date
       params[:end] ||= Sprint.end_date
       render layout: 'active_admin'

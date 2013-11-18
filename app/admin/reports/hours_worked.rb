@@ -1,6 +1,7 @@
+#encoding: utf-8
 ActiveAdmin.register_page "HoursWorkedReport" do
   
-  menu label: "Hours Worked Report", parent: "Reportes", if: proc { can? :index, :hours_worked_report }
+  menu label: "Horas trabajadas", parent: "Reportes", if: proc { can? :index, :hours_worked_report }
   
   controller.authorize_resource class: false
   controller.before_filter :employees
@@ -9,7 +10,7 @@ ActiveAdmin.register_page "HoursWorkedReport" do
     @selected_employees = AdminUser.find params[:employee_id]
     @start = Date.parse(params[:start]).to_date
     @end = Date.parse(params[:end]).to_date
-    @page_title = "Hours Worked Report"
+    @page_title = "Horas trabajadas"
 
     if ActiveRecord::Base.connection.adapter_name.downcase.start_with? 'mysql'
       cast_str = 'UNSIGNED'
@@ -30,7 +31,7 @@ ActiveAdmin.register_page "HoursWorkedReport" do
   controller do
     
     def index
-      @page_title = 'Hours Worked Report'
+      @page_title = 'Horas trabajadas'
       params[:start] ||= Sprint.start_date
       params[:end] ||= Sprint.end_date
       render layout: 'active_admin'

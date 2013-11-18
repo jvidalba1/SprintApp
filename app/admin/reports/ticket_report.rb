@@ -1,6 +1,7 @@
+#encoding: utf-8
 ActiveAdmin.register_page "TicketReport" do
   
-  menu label: "Ticket Report", parent: "Reportes", if: proc { can? :index, :ticket_report }
+  menu label: "Tickets", parent: "Reportes", if: proc { can? :index, :ticket_report }
   controller.authorize_resource class: false, except: :tickets
   controller.before_filter :projects
   
@@ -8,7 +9,7 @@ ActiveAdmin.register_page "TicketReport" do
     @ticket = Ticket.find params[:ticket_id]    
     @start = Date.parse(params[:start]).to_date
     @end = Date.parse(params[:end]).to_date
-    @page_title = "Ticket Report: #{@ticket.long_name}"
+    @page_title = "Reporte de Tickets: #{@ticket.long_name}"
 
     @comments = {}
     (@start..@end).each do |date|
@@ -29,7 +30,7 @@ ActiveAdmin.register_page "TicketReport" do
   controller do
     
     def index
-      @page_title = 'Ticket Report'
+      @page_title = 'Reporte de Tickets'
       params[:start] ||= Sprint.start_date
       params[:end] ||= Sprint.end_date
       render layout: 'active_admin'
