@@ -125,7 +125,7 @@ GEM
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
     mime-types (1.23)
-    mini_magick (3.5.0)
+    mini_magick (3.6.0)
       subexec (~> 0.2.1)
     multi_json (1.7.3)
     mysql2 (0.3.13)
@@ -191,7 +191,7 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     stringex (1.3.2)
-    subexec (0.2.2)
+    subexec (0.2.3)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
@@ -234,7 +234,7 @@ DEPENDENCIES
   haml
   jquery-rails
   meta_search (>= 1.1.0.pre)
-  mini_magick
+  mini_magick (= 3.6.0)
   mysql2
   paper_trail
   pg

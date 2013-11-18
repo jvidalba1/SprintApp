@@ -29,7 +29,7 @@ end
 
 # Assets
 gem 'carrierwave'
-gem 'mini_magick'
+gem 'mini_magick', '3.6.0'
 
 # Validation helpers
 gem 'spectator-validates_email', :require => 'validates_email'
