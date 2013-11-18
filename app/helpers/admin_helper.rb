@@ -1,3 +1,4 @@
+#encoding: utf-8
 module AdminHelper
   
   def restricted_actions_column(table)

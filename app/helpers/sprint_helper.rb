@@ -1,3 +1,4 @@
+#encoding: utf-8
 module SprintHelper
 
   def colorize_hours_per_team_member_for_sprint(hours)

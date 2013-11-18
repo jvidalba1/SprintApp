@@ -1,3 +1,4 @@
+#encoding: utf-8
 module PaginationHelper
 
   # Gives me the basic :index renderer, without scopes or the filter sidebar

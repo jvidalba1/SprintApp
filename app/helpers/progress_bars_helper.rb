@@ -1,3 +1,4 @@
+#encoding: utf-8
 module ProgressBarsHelper
 
   def milestone_progress_indicator(milestone, show_progress=true)
