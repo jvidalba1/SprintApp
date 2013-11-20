@@ -60,13 +60,13 @@ Timetracker::Application.configure do
   
   # ActionMailer Config
   config.action_mailer.perform_deliveries = false
-  config.action_mailer.default_url_options = { :host => 'sprintapp.com' }
+  config.action_mailer.default_url_options = { :host => 'powerful-cove-1598.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address => 'smtp.gmail.com',
     :port => '587',
     :authentication => :plain,
-    :user_name => "jmateovidalb",
+    :user_name => "jmateovidalb@gmail.com",
     :password => "deportivo",
     :domain => 'gmail.com'
   }

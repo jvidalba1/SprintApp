@@ -1,7 +1,7 @@
 defaults: &defaults
   email:
-    notifications_sender: 'notifications@sprintapp.com'
-    devise_sender: 'support@sprintapp.com'
+    notifications_sender: 'jmateovidalb@gmail.com'
+    devise_sender: 'jmateovidalb@gmail.com'
 
 development:
   <<: *defaults
