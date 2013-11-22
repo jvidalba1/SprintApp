@@ -66,8 +66,8 @@ Timetracker::Application.configure do
     :address => 'smtp.gmail.com',
     :port => '587',
     :authentication => :plain,
-    :user_name => "jmateovidalb@gmail.com",
-    :password => "deportivo",
+    :user_name => "jvidalba",
+    :password => "vrpRMB96",
     :domain => 'gmail.com'
   }
     
