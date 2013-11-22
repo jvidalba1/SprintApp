@@ -8,7 +8,7 @@ class NotificationObserver < ActiveRecord::Observer
     version = ticket.versions.where("created_at >= ?", 3.seconds.ago).first
     unless version.nil?
       recipients = notification_distribution_list(ticket, version)
-      TicketMailer.notification_email(ticket, recipients, version).deliver unless recipients.empty? || notification_from_timer?(ticket, version)
+      TicketMailer.notification_email(ticket, recipients, version).deliver! unless recipients.empty? || notification_from_timer?(ticket, version)
     end
     
   end
