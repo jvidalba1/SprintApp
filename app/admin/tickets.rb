@@ -52,7 +52,8 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
   
   batch_action :edit do |selected_ids|
     @ticket_ids = selected_ids
-    @project = Project.find_by_url! params[:project_id]
+    #params[:collection_selection].each do ||
+    @project = Project.find_by_id! params[:collection_selection]
     @statuses = TicketStatus.all
     @categories = TicketCategory.all
     @priorities = TicketPriority.all

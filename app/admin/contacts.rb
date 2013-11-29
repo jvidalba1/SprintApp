@@ -14,9 +14,8 @@ ActiveAdmin.register Contact, :sort_order => "name_asc" do
   
   index do |t|
     selectable_column
-    column("Nombre") do
-      resource.name
-    end
+    column("Nombre") { |contact| contact.name }
+
     column :email, :sortable => :email do |contact|
       link_to contact.email, "mailto:#{contact.email}"
     end

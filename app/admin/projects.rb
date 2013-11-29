@@ -73,7 +73,7 @@ ActiveAdmin.register Project, :sort_order => "number_asc" do
         row("Número") { resource.number }
         row("Nombre") { resource.name}
         row("Cliente") { link_to resource.client.display_name, resource.client }
-        row("Estimación por hora") { number_to_currency resource.hourly_rate } unless current_admin_user.employee?
+        row("Precio por hora") { number_to_currency resource.hourly_rate } unless current_admin_user.employee?
         row "Fecha de inicio" do
           resource.start_date.humanize
         end

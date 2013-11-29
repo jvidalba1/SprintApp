@@ -2,7 +2,7 @@
 semantic_form_for @client, :builder => ActiveAdmin::FormBuilder do |f| 
   f.inputs "Información del cliente" do
     f.input :name, :label => "Nombre"
-    f.input :hourly_rate, :label => "Estimación por hora", :hint => "This determines the hourly rate on new projects created for this client", label: "Hourly Rate"
+    f.input :hourly_rate, :label => "Precio por hora", :hint => "Esto determina el precio por hora en nuevos proyectos para este cliente"
   end 
   render :partial => "addresses/form", :locals => { :form => f } 
   f.buttons 

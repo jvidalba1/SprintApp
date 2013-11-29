@@ -39,7 +39,7 @@ ActiveAdmin.register Client, :label => "Cliente", :sort_order => "name_asc" do
         row "Nombre" do
           resource.name
         end
-        row "Tasa por hora" do
+        row "Precio por hora" do
           resource.hourly_rate { number_to_currency resource.hourly_rate }
         end
         row "Creado" do

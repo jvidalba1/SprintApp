@@ -9,7 +9,7 @@ semantic_form_for @project, :html => { :class => "filter_form consolidated_form"
     f.input :description, :label => "Descripción", :input_html => { class: :ckeditor }
   end 
 	f.inputs "Interno / Contabilidad" do
-		f.input :hourly_rate, :hint => "Todo el tiempo asignado a los tickets para este proyecto usará este hourly rate. Si se deja vacío el valor predeterminado sera el configurado para este cliente", label: "Hourly Rate", as: :string
+		f.input :hourly_rate, :label => "Precio por hora", :hint => "Todo el tiempo asignado a los tickets para este proyecto usará este precio por hora. Si se deja vacío el valor predeterminado sera el configurado para este cliente",  as: :string
 		f.input :product_owner, :label => "Product Owner", :required => true, :collection => AdminUser.active.admin, hint: "El product owner es responsable is responsible de supervisar este proyecto y ver el proyecto en su Tablero"
 	end
 	f.inputs "Miembros" do
