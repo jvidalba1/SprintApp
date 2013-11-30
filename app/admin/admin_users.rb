@@ -48,12 +48,12 @@ ActiveAdmin.register AdminUser, :sort_order => "email_desc" do
   filter :created_at
   filter :updated_at
   
-  batch_action :deactivate, { if: proc{ can? :deactivate, AdminUser }, confirm: '¿Esta seguro que quieres desactivar esos usuarios? Esto evitará que inicien sesión en <NombreApp>' } do |selected_ids|
+  batch_action :deactivate, { if: proc{ can? :deactivate, AdminUser }, confirm: '¿Esta seguro que quieres desactivar esos usuarios? Esto evitará que inicien sesión' } do |selected_ids|
     AdminUser.find(selected_ids).each { |u| u.suspend! }
     redirect_to collection_path, notice: "#{selected_ids.count} usuarios desactivados exitosamente."
   end
   
-  batch_action :activate, { if: proc { can? :activate, AdminUser } , confirm: '¿Esta seguro que quieres activar esos usuarios? Esto les permitirá iniciar sensión en <NombreApp>' } do |selected_ids|
+  batch_action :activate, { if: proc { can? :activate, AdminUser } , confirm: '¿Esta seguro que quieres activar esos usuarios? Esto les permitirá iniciar sensión' } do |selected_ids|
     AdminUser.find(selected_ids).each { |u| u.unsuspend! }
     redirect_to collection_path, notice: "#{selected_ids.count} usuarios activados exitosamente."
   end

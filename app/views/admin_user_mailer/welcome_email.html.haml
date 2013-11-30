@@ -1,13 +1,13 @@
 %table(width="100%")
 	%tr
 		%td
-			%h3(style="margin-bottom:18px;font-size:18px;color:#5E6469;font-weight:normal;")== ¡Bienvenido a NombreApp!
+			%h3(style="margin-bottom:18px;font-size:18px;color:#5E6469;font-weight:normal;")== ¡Bienvenido!
 	
 	%tr
 		%td(style="background:url(#{asset_path 'divider.png'}) repeat-x top left;padding-top:10px;font-size:12px;")
 			
-			%p== Has recibido este email porque alguién te ha registrado para una cuenta con NombreApp.
-			%p== Para iniciar sesión y empezar a usar NombreApp hoy, ingresa al siguiente link #{link_to dashboard_url, dashboard_url}.
+			%p== Has recibido este email porque alguién te ha registrado para una cuenta.
+			%p== Para iniciar sesión, ingresa al siguiente link #{link_to dashboard_url, dashboard_url}.
 				
 			%p
 				Tus credenciales son:
@@ -16,6 +16,6 @@
 					%li== contraseña: #{@user.password}
 				
 - content_for :footer do
-	== Has recibido este email porque alguién te ha registrado para una cuenta con NombreApp.
+	== Has recibido este email porque alguién te ha registrado para una cuenta.
 	%br/
 	Si tu crees que esto ha sido un error, por favor envía un correo a jvidal@visionamos.com informando acerca del error.

@@ -5,7 +5,7 @@ ActiveAdmin::Dashboards.build do
   # Welcome widgets
   ###################################
   
-  section "Bienvenido a <NombreApp>", :if => proc { current_admin_user.new_user? } do
+  section "Bienvenido", :if => proc { current_admin_user.new_user? } do
     current_admin_user.welcome!
     text_node(render "dashboard/welcome")
   end

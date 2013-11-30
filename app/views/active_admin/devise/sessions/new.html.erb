@@ -1,5 +1,5 @@
 <div id="login">
-  <h2><%= title "#{active_admin_application.site_title} Inicio" %></h2>
+  <h2>Inicio</h2>
 
   <% scope = Devise::Mapping.find_scope!(resource_name) %>
   <%= active_admin_form_for(resource, :as => resource_name, :url => send(:"#{scope}_session_path"), :html => { :id => "session_new" }) do |f| 
@@ -19,9 +19,14 @@
 
 <% content_for :footer do %>
 	<div class="tweets">
-		<div>
-			<strong class="sprint_app">2013 </strong>
-			<span class="tweet"><a class="view-more" href="http://jvidalba.herokuapp.com">URL to web site</a></span>
-		</div>
+      <div>
+        <strong><a class="view-more" target="_blank" href="http://www.visionamos.com">Visionamos</a> | Carrera 48 No 10 - 45 CC. Monterrey Oficina 915 -  Medellín - Colombia | Teléfono: (57) (4) 354 26 77 - Fax (57) (4) 315 29 70</strong>
+      </div>
+      <div>
+        <strong>Fecha de creación:</strong> 30-NOV-2013 por Mateo Vidal
+      </div>
+      <div>
+        <strong>Última fecha de actualización:</strong>
+      </div>
 	</div>
 <% end %>

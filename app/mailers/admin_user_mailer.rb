@@ -11,7 +11,7 @@ class AdminUserMailer < ActionMailer::Base
   private
     
     def subject
-      "¡Bienvenido a <NombreApp>!"
+      "¡Bienvenido!"
     end
   
 end
