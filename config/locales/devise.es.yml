@@ -1,5 +1,20 @@
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 es:
+  number:
+    percentage:
+      format:
+        delimiter: ","
+    currency:
+      format: # Pesos Colombianos
+        format: "%u%n"
+        unit: "$"
+        precision: 2
+        delimiter: ","
+        separator: "."
+    format:
+      delimiter: ","
+      precision: 2
+      separator: "."
   errors:
     messages:
       expired: "ha expirado, por favor pide una nueva"
